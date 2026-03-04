@@ -1,0 +1,54 @@
+/**
+ * BrainWorm Studios - Variables de diseño centralizadas
+ * Cambia estos valores para personalizar la apariencia del sitio
+ */
+
+:root {
+  /* === Paleta de colores === */
+  --bws-gold-primary: #f5ad00;
+  --bws-gold-secondary: #ecb939;
+  --bws-gold-light: #f0c75e;
+  --bws-brown-medium: #726255;
+  --bws-brown-dark: #372e29;
+  --bws-black: #000000;
+
+  /* Colores por sección (backgrounds) */
+  --bws-section-1-bg: var(--bws-black);
+  --bws-section-2-bg: var(--bws-gold-primary);
+  --bws-section-3-bg: var(--bws-brown-medium);
+  --bws-section-4-bg: var(--bws-gold-secondary);
+
+  /* Colores de texto y acentos */
+  --bws-text-primary: #ffffff;
+  --bws-text-secondary: rgba(255, 255, 255, 0.9);
+  --bws-accent-link: var(--bws-gold-light);
+  --bws-accent-hover: #ffffff;
+
+  /* Background cuando otra sección está activa */
+  --bws-overlay-dark: var(--bws-black);
+
+  /* === Tipografía === */
+  --bws-font-family: 'Open Sans', 'Lato', 'Helvetica', sans-serif;
+  --bws-font-size-title: 38px;
+  --bws-font-size-hint: 13px;
+  --bws-font-size-icon: 32px;
+  --bws-font-size-icon-large: 80px;
+
+  /* === Transiciones === */
+  --bws-transition-main: 0.8s cubic-bezier(0.54, 0.35, 0.29, 0.99);
+  --bws-transition-delay: 0.4s;
+  --bws-transition-menu: 0.5s ease-out;
+  --bws-transition-content: 0.5s cubic-bezier(0.25, 1, 0.5, 1.25);
+  --bws-transition-content-delay: 1s;
+  --bws-transition-link: 250ms ease-out;
+
+  /* === Layout === */
+  --bws-menu-width: 10%;
+  --bws-menu-height: 280px;
+  --bws-menu-icon-spacing: 30px;
+  --bws-content-width: 270px;
+  --bws-content-height: 170px;
+  --bws-content-offset: 360%;
+  --bws-slide-translate: -190%;
+  --bws-blur-amount: 3px;
+}
