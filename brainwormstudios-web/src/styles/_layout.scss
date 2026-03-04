@@ -88,53 +88,165 @@ body,
   filter: blur(var(--bws-blur-amount));
 }
 
-/* Menú - base */
-.nav-menu {
+/* Barra de navegación - base (móvil: topbar) */
+.nav-bar {
   position: fixed;
-  z-index: 10;
+  z-index: 9999;
   top: 0;
-  bottom: 0;
   left: 0;
-  margin: auto;
-  height: var(--bws-menu-height);
-  width: var(--bws-menu-width);
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+  background: #000000;
+}
+
+.nav-logo,
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  color: var(--bws-text-primary);
+  text-decoration: none;
+  transition: opacity var(--bws-transition-menu);
+}
+
+.nav-logo:hover {
+  opacity: 0.8;
+}
+
+.nav-logo-main {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+}
+
+.nav-logo-sub {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  opacity: 0.9;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--bws-menu-icon-spacing);
   padding: 0;
-  text-align: center;
+  margin: 0;
   list-style: none;
 }
 
+.nav-menu .nav-link,
 .nav-menu .nav-icon {
-  margin: var(--bws-menu-icon-spacing) 0;
   color: var(--bws-text-primary);
-  font-size: var(--bws-font-size-icon);
-  display: block;
-  transition: all var(--bws-transition-menu) !important;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--bws-transition-menu);
   cursor: pointer;
 }
 
+.nav-menu .nav-link:hover,
 .nav-menu .nav-icon:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
-/* Escala iconos del menú cuando una sección está activa */
+/* Enlace activo del menú - dorado; inactivos - blanco */
 #t1:target .nav-menu .nav-icon,
 #t2:target .nav-menu .nav-icon,
 #t3:target .nav-menu .nav-icon,
 #t4:target .nav-menu .nav-icon {
-  transform: scale(0.6);
-  transition-delay: 0.25s;
+  color: #ffffff;
 }
 
 #t1:target #nav-uno,
 #t2:target #nav-dos,
 #t3:target #nav-tres,
 #t4:target #nav-cuatro {
-  transform: scale(1.2) !important;
+  color: var(--bws-accent-link);
 }
 
 .nav-menu a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Desktop: barra lateral vertical con palabras centradas + subrayado */
+@media (min-width: 769px) {
+  .nav-bar {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: var(--bws-menu-width);
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    gap: 0;
+    background: transparent;
+  }
+
+  .nav-logo {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-logo-main {
+    font-size: 20px;
+  }
+
+  .nav-logo-sub {
+    font-size: 9px;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: var(--bws-menu-icon-spacing);
+    align-items: center;
+  }
+
+  .nav-menu .nav-link,
+  .nav-menu .nav-icon {
+    position: relative;
+    font-size: 15px;
+    padding: 4px 0;
+    margin: 0;
+  }
+
+  /* Subrayado que se rellena al hacer hover o cuando está seleccionado */
+  .nav-menu .nav-link::after,
+  .nav-menu .nav-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--bws-accent-link);
+    transition: width 0.25s ease-out;
+  }
+
+  .nav-menu .nav-link:hover::after,
+  .nav-menu .nav-icon:hover::after,
+  #t1:target #nav-uno::after,
+  #t2:target #nav-dos::after,
+  #t3:target #nav-tres::after,
+  #t4:target #nav-cuatro::after {
+    width: 100%;
+  }
 }
 
 /* Contenido de cada sección */
@@ -183,35 +295,60 @@ body,
     background: #000000;
   }
 
-  /* Topbar fija - fondo sólido negro */
-  .nav-menu {
-    top: 0;
-    bottom: auto;
-    left: 0;
-    right: 0;
-    margin: 0;
-    width: 100%;
+  /* Topbar fija - logo compacto + enlaces de texto (más espacio para palabras) */
+  .nav-bar {
     height: var(--bws-topbar-height);
     min-height: 56px;
-    padding: 0;
+    padding: 0 8px;
     padding-top: env(safe-area-inset-top, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    background: #000000;
-    z-index: 9999;
-    box-sizing: border-box;
   }
 
+  .nav-logo {
+    flex-shrink: 0;
+    min-width: 0;
+    margin-left: 12px;
+    margin-top: 6px;
+  }
+
+  .nav-logo-main {
+    font-size: 14px;
+  }
+
+  .nav-logo-sub {
+    font-size: 7px;
+  }
+
+  .nav-menu {
+    gap: 12px;
+  }
+
+  .nav-menu .nav-link,
   .nav-menu .nav-icon {
-    margin: 0;
-    padding: 12px;
-    min-width: 44px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    font-size: 12px;
+    padding: 8px 4px;
+  }
+
+  /* Subrayado en móvil: hover y sección activa */
+  .nav-menu .nav-link::after,
+  .nav-menu .nav-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--bws-accent-link);
+    transition: width 0.25s ease-out;
+  }
+
+  .nav-menu .nav-link:hover::after,
+  .nav-menu .nav-icon:hover::after,
+  #t1:target #nav-uno::after,
+  #t2:target #nav-dos::after,
+  #t3:target #nav-tres::after,
+  #t4:target #nav-cuatro::after {
+    width: 100%;
   }
 
   /* Sin padding en .ct - evita espacio blanco entre topbar y secciones */
@@ -301,8 +438,21 @@ body,
     --bws-font-size-hint: 11px;
   }
 
+  .nav-logo-main {
+    font-size: 12px;
+  }
+
+  .nav-logo-sub {
+    font-size: 6px;
+  }
+
   .nav-menu {
-    gap: 20px;
+    gap: 8px;
+  }
+
+  .nav-menu .nav-link,
+  .nav-menu .nav-icon {
+    font-size: 11px;
   }
 
   .section-content {
