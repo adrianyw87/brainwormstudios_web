@@ -1,0 +1,23 @@
+{
+  "NAV_MAIN_LABEL": "Navegación principal",
+  "NAV_BRAND_LABEL": "BrainWorm Studios",
+  "NAV_LOGO_BW": "BW",
+  "NAV_LOGO_STUDIOS": "studios",
+  "NAV_STUDIO": "Estudio",
+  "NAV_FREEJEFRY": "FreeJefry",
+  "NAV_DESARROLLO": "Desarrollo",
+  "NAV_CONTACT": "Contacto",
+  "SECTION_ESTUDIO_TITLE": "El Estudio",
+  "SECTION_ESTUDIO_HINT_1": "BrainWorm Studios es un estudio de videojuegos independiente.",
+  "SECTION_ESTUDIO_HINT_2": "Creamos experiencias únicas y memorables.",
+  "SECTION_FREEJEFRY_TITLE": "Free Jefry",
+  "SECTION_FREEJEFRY_HINT": "Nuestro primer juego. Próximamente más información.",
+  "SECTION_OTROS_TITLE": "Otros",
+  "SECTION_OTROS_HINT_1": "Otros proyectos y novedades.",
+  "SECTION_OTROS_HINT_2": "Mantente atento a nuestras redes.",
+  "SECTION_CONTACTO_TITLE": "Contacto",
+  "SECTION_CONTACTO_QUESTION": "¿Quieres ponerte en contacto con nosotros?",
+  "LANG_ES": "Español",
+  "LANG_EN": "English",
+  "LANG_SELECT": "Idioma"
+}

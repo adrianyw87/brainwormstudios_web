@@ -103,6 +103,12 @@ body,
   background: #000000;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .nav-logo,
 .nav-menu {
   display: flex;
@@ -181,6 +187,95 @@ body,
   color: inherit;
 }
 
+/* Selector de idioma */
+.lang-selector {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lang-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: var(--bws-text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-trigger:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lang-trigger .fa-chevron-down {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.lang-trigger .fa-chevron-down.lang-open {
+  transform: rotate(180deg);
+}
+
+.lang-full {
+  display: inline;
+}
+
+.lang-short {
+  display: none;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 120px;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.lang-dropdown-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  color: var(--bws-text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.lang-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-option.lang-active {
+  color: var(--bws-accent-link);
+}
+
 /* Desktop: barra lateral vertical con palabras centradas + subrayado */
 @media (min-width: 769px) {
   .nav-bar {
@@ -195,6 +290,10 @@ body,
     padding: 0;
     gap: 0;
     background: transparent;
+  }
+
+  .nav-left {
+    flex-direction: column;
   }
 
   .nav-logo {
@@ -247,6 +346,30 @@ body,
   #t4:target #nav-cuatro::after {
     width: 100%;
   }
+
+  .lang-selector {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Desktop: dropdown hacia arriba */
+  .lang-dropdown {
+    top: auto;
+    bottom: calc(100% + 6px);
+    right: 50%;
+    transform: translateY(4px) translateX(50%);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .lang-dropdown-open {
+    transform: translateY(0) translateX(50%);
+  }
+
+  .lang-trigger .fa-chevron-down.lang-open {
+    transform: rotate(180deg);
+  }
 }
 
 /* Contenido de cada sección */
@@ -295,38 +418,59 @@ body,
     background: #000000;
   }
 
-  /* Topbar fija - logo compacto + enlaces de texto (más espacio para palabras) */
+  /* Topbar fija - alineación vertical consistente */
   .nav-bar {
     height: var(--bws-topbar-height);
     min-height: 56px;
-    padding: 0 8px;
+    padding: 0 12px;
     padding-top: env(safe-area-inset-top, 0);
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-left {
+    align-items: center;
   }
 
   .nav-logo {
     flex-shrink: 0;
     min-width: 0;
-    margin-left: 12px;
-    margin-top: 6px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav-logo-main {
     font-size: 14px;
+    line-height: 1;
   }
 
   .nav-logo-sub {
     font-size: 7px;
+    line-height: 1.2;
   }
 
   .nav-menu {
-    gap: 12px;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .nav-menu li {
+    display: flex;
+    align-items: center;
   }
 
   .nav-menu .nav-link,
   .nav-menu .nav-icon {
     position: relative;
     font-size: 12px;
-    padding: 8px 4px;
+    padding: 6px 2px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
   }
 
   /* Subrayado en móvil: hover y sección activa */
@@ -349,6 +493,45 @@ body,
   #t3:target #nav-tres::after,
   #t4:target #nav-cuatro::after {
     width: 100%;
+  }
+
+  /* Móvil: ES/EN compacto, a la derecha del menú */
+  .lang-full {
+    display: none;
+  }
+
+  .lang-short {
+    display: inline;
+  }
+
+  .lang-selector {
+    align-self: center;
+  }
+
+  .lang-trigger {
+    padding: 5px 6px;
+    min-width: 36px;
+    min-height: 28px;
+    font-size: 11px;
+    gap: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .lang-trigger .fa-chevron-down {
+    font-size: 8px;
+  }
+
+  .lang-option {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  /* Móvil: más espacio entre trigger y dropdown */
+  .lang-dropdown {
+    top: calc(100% + 8px);
   }
 
   /* Sin padding en .ct - evita espacio blanco entre topbar y secciones */
@@ -444,6 +627,10 @@ body,
 
   .nav-logo-sub {
     font-size: 6px;
+  }
+
+  .nav-left {
+    gap: 8px;
   }
 
   .nav-menu {
