@@ -1,0 +1,20 @@
+[
+  {
+    "id": "web",
+    "titulo": "Desarrollo Web",
+    "descripcion": "Diseño y desarrollo de sitios web modernos, responsivos y accesibles.",
+    "icono": "fa-globe"
+  },
+  {
+    "id": "apps",
+    "titulo": "Aplicaciones",
+    "descripcion": "Desarrollo de aplicaciones móviles y de escritorio multiplataforma.",
+    "icono": "fa-mobile-screen"
+  },
+  {
+    "id": "games",
+    "titulo": "Videojuegos",
+    "descripcion": "Creación de experiencias interactivas y videojuegos indie.",
+    "icono": "fa-gamepad"
+  }
+]

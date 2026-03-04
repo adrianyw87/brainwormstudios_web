@@ -1,22 +1,29 @@
-import { Component, HostListener } from '@angular/core';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  NavBarComponent,
+  EstudioSectionComponent,
+  FreeJefrySectionComponent,
+  DesarrolloSectionComponent,
+  ContactoSectionComponent
+} from './components';
 
 @Component({
   selector: 'app-root',
-  imports: [TranslateModule, CommonModule],
+  imports: [
+    NavBarComponent,
+    EstudioSectionComponent,
+    FreeJefrySectionComponent,
+    DesarrolloSectionComponent,
+    ContactoSectionComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'BrainWorm Studios';
   currentLang = 'es';
-  langOpen = false;
-
-  readonly languages = [
-    { code: 'es', label: 'LANG_ES' },
-    { code: 'en', label: 'LANG_EN' }
-  ];
+  estudioView: 'cta' | 'detalle' = 'cta';
 
   constructor(public translate: TranslateService) {
     translate.addLangs(['es', 'en']);
@@ -29,23 +36,15 @@ export class AppComponent {
     }
   }
 
-  setLanguage(code: string): void {
+  onLanguageChange(code: string): void {
     this.currentLang = code;
-    this.translate.use(code);
-    localStorage.setItem('lang', code);
-    document.documentElement.lang = code;
-    this.langOpen = false;
   }
 
-  toggleLangDropdown(): void {
-    this.langOpen = !this.langOpen;
-  }
+  resetEstudioView = (): void => {
+    this.estudioView = 'cta';
+  };
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    const target = event.target as HTMLElement;
-    if (this.langOpen && !target.closest('.lang-selector')) {
-      this.langOpen = false;
-    }
+  goToEstudioDetalle(): void {
+    this.estudioView = 'detalle';
   }
 }

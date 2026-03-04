@@ -1,0 +1,32 @@
+<nav [attr.aria-label]="'NAV_MAIN_LABEL' | translate" class="nav-bar">
+  <div class="nav-left">
+    <a href="#t1" class="nav-logo" [attr.aria-label]="'NAV_BRAND_LABEL' | translate" (click)="onEstudioNavClick()">
+      <span class="nav-logo-main">{{ 'NAV_LOGO_BW' | translate }}</span>
+      <span class="nav-logo-sub">{{ 'NAV_LOGO_STUDIOS' | translate }}</span>
+    </a>
+  </div>
+  <ul class="nav-menu" id="menu">
+    <li><a href="#t1" class="nav-link nav-icon" id="nav-uno"
+        (click)="onEstudioNavClick()">{{ 'NAV_STUDIO' | translate }}</a></li>
+    <li><a href="#t2" class="nav-link nav-icon" id="nav-dos">{{ 'NAV_FREEJEFRY' | translate }}</a></li>
+    <li><a href="#t3" class="nav-link nav-icon" id="nav-tres">{{ 'NAV_DESARROLLO' | translate }}</a></li>
+    <li><a href="#t4" class="nav-link nav-icon" id="nav-cuatro">{{ 'NAV_CONTACT' | translate }}</a></li>
+  </ul>
+  <div class="lang-selector">
+    <button type="button" class="lang-trigger" (click)="toggleLangDropdown()"
+      [attr.aria-label]="'LANG_SELECT' | translate">
+      <span
+        class="lang-current lang-full">{{ currentLang === 'es' ? ('LANG_ES' | translate) : ('LANG_EN' | translate) }}</span>
+      <span class="lang-current lang-short">{{ currentLang | uppercase }}</span>
+      <i class="fa-solid fa-chevron-down" [class.lang-open]="langOpen" aria-hidden="true"></i>
+    </button>
+    <ul class="lang-dropdown" [class.lang-dropdown-open]="langOpen">
+      <li *ngFor="let lang of languages">
+        <button type="button" class="lang-option" [class.lang-active]="currentLang === lang.code"
+          (click)="setLanguage(lang.code)">
+          {{ lang.label | translate }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

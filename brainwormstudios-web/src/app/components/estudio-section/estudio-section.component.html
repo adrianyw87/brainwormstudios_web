@@ -1,0 +1,15 @@
+@if (view === 'cta') {
+<section class="section-content cta-estudio" [attr.aria-labelledby]="'estudio-title'">
+  <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
+  <span class="section-title" id="estudio-title">{{ 'SECTION_ESTUDIO_TITLE' | translate }}</span>
+  <span
+    class="section-hint">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}<br>{{ 'SECTION_ESTUDIO_HINT_2' | translate }}</span>
+  <button type="button" class="cta-btn" (click)="explorarClick.emit()">{{ 'CTA_EXPLORAR' | translate }}</button>
+</section>
+} @else {
+<section class="section-content estudio-detalle" [attr.aria-labelledby]="'estudio-detalle-title'">
+  <span class="section-title" id="estudio-detalle-title">{{ 'ESTUDIO_DETALLE_TITLE' | translate }}</span>
+  <span class="section-hint">{{ 'ESTUDIO_DETALLE_DESC' | translate }}</span>
+  <a href="#t4" class="cta-btn">{{ 'CTA_IR_CONTACTO' | translate }}</a>
+</section>
+}

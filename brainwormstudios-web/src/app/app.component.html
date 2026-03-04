@@ -2,73 +2,25 @@
   <div class="ct" id="t2">
     <div class="ct" id="t3">
       <div class="ct" id="t4">
-        <nav [attr.aria-label]="'NAV_MAIN_LABEL' | translate" class="nav-bar">
-          <div class="nav-left">
-            <a href="#t1" class="nav-logo" [attr.aria-label]="'NAV_BRAND_LABEL' | translate">
-              <span class="nav-logo-main">{{ 'NAV_LOGO_BW' | translate }}</span>
-              <span class="nav-logo-sub">{{ 'NAV_LOGO_STUDIOS' | translate }}</span>
-            </a>
-          </div>
-          <ul class="nav-menu" id="menu">
-            <li><a href="#t1" class="nav-link nav-icon" id="nav-uno">{{ 'NAV_STUDIO' | translate }}</a></li>
-            <li><a href="#t2" class="nav-link nav-icon" id="nav-dos">{{ 'NAV_FREEJEFRY' | translate }}</a></li>
-            <li><a href="#t3" class="nav-link nav-icon" id="nav-tres">{{ 'NAV_DESARROLLO' | translate }}</a></li>
-            <li><a href="#t4" class="nav-link nav-icon" id="nav-cuatro">{{ 'NAV_CONTACT' | translate }}</a></li>
-          </ul>
-          <div class="lang-selector">
-            <button type="button" class="lang-trigger" (click)="toggleLangDropdown()"
-              [attr.aria-label]="'LANG_SELECT' | translate">
-              <span
-                class="lang-current lang-full">{{ currentLang === 'es' ? ('LANG_ES' | translate) : ('LANG_EN' | translate) }}</span>
-              <span class="lang-current lang-short">{{ currentLang | uppercase }}</span>
-              <i class="fa-solid fa-chevron-down" [class.lang-open]="langOpen" aria-hidden="true"></i>
-            </button>
-            <ul class="lang-dropdown" [class.lang-dropdown-open]="langOpen">
-              <li *ngFor="let lang of languages">
-                <button type="button" class="lang-option" [class.lang-active]="currentLang === lang.code"
-                  (click)="setLanguage(lang.code)">
-                  {{ lang.label | translate }}
-                </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <app-nav-bar [currentLang]="currentLang" (languageChange)="onLanguageChange($event)"
+          [onEstudioNavClick]="resetEstudioView">
+        </app-nav-bar>
 
         <div class="page" id="p1">
-          <section class="section-content" [attr.aria-labelledby]="'estudio-title'">
-            <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
-            <span class="section-title" id="estudio-title">{{ 'SECTION_ESTUDIO_TITLE' | translate }}</span>
-            <span
-              class="section-hint">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}<br>{{ 'SECTION_ESTUDIO_HINT_2' | translate }}</span>
-          </section>
+          <app-estudio-section [view]="estudioView" (explorarClick)="goToEstudioDetalle()">
+          </app-estudio-section>
         </div>
 
         <div class="page" id="p2">
-          <section class="section-content" [attr.aria-labelledby]="'freejefry-title'">
-            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
-            <span class="section-title" id="freejefry-title">{{ 'SECTION_FREEJEFRY_TITLE' | translate }}</span>
-            <span class="section-hint">{{ 'SECTION_FREEJEFRY_HINT' | translate }}</span>
-          </section>
+          <app-freejefry-section></app-freejefry-section>
         </div>
 
         <div class="page" id="p3">
-          <section class="section-content" [attr.aria-labelledby]="'otros-title'">
-            <i class="fa-solid fa-rocket" aria-hidden="true"></i>
-            <span class="section-title" id="otros-title">{{ 'SECTION_OTROS_TITLE' | translate }}</span>
-            <span
-              class="section-hint">{{ 'SECTION_OTROS_HINT_1' | translate }}<br>{{ 'SECTION_OTROS_HINT_2' | translate }}</span>
-          </section>
+          <app-desarrollo-section></app-desarrollo-section>
         </div>
 
         <div class="page" id="p4">
-          <section class="section-content" [attr.aria-labelledby]="'contacto-title'">
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-            <span class="section-title" id="contacto-title">{{ 'SECTION_CONTACTO_TITLE' | translate }}</span>
-            <p class="section-hint">{{ 'SECTION_CONTACTO_QUESTION' | translate }}</p>
-            <p class="section-hint">
-              <a href="mailto:contacto&#64;brainwormstudios.com">contacto&#64;brainwormstudios.com</a>
-            </p>
-          </section>
+          <app-contacto-section></app-contacto-section>
         </div>
       </div>
     </div>
