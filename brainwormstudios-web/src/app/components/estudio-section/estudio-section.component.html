@@ -4,25 +4,30 @@
       [attr.aria-labelledby]="'estudio-title'">
       <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
       <div class="cta-estudio-text-mix">
-        <h2 class="section-title cta-estudio-title cta-estudio-title-tilt cta-estudio-title-chars" id="estudio-title">
+        <h2 class="section-title cta-estudio-title cta-estudio-title-tilt cta-estudio-title-chars cta-estudio-title-mix"
+          id="estudio-title">
           @for (char of titleChars; track $index) {
           <span class="cta-title-char" [class.cta-title-char-left]="$index < titleChars.length / 2"
             [class.cta-title-char-right]="$index >= titleChars.length / 2"
+            [class.cta-title-char-big]="isHighlightChar($index)"
             [style.animation-delay]="(($index < titleChars.length / 2 ? $index : titleChars.length - 1 - $index) * 0.025 + 0.15) + 's'">{{ char === ' ' ? '\u00A0' : char }}</span>
           }
         </h2>
         <!-- <p class="cta-estudio-tagline cta-estudio-tagline-tilt">{{ 'SECTION_ESTUDIO_TAGLINE' | translate }}</p> -->
       </div>
+      <!-- Subtextos (por si se usan en el futuro)
       <div class="cta-estudio-hints cta-estudio-hints-stagger">
-        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-1">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}
-        </p>
-        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-2">{{ 'SECTION_ESTUDIO_HINT_2' | translate }}
-        </p>
-        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-3 cta-estudio-hint-last">
-          {{ 'SECTION_ESTUDIO_HINT_3' | translate }}</p>
+        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-1">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}</p>
+        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-2">{{ 'SECTION_ESTUDIO_HINT_2' | translate }}</p>
+        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-3 cta-estudio-hint-last">{{ 'SECTION_ESTUDIO_HINT_3' | translate }}</p>
       </div>
-      <app-bws-button class="cta-estudio-btn" (clicked)="onExplorarClick()">{{ 'CTA_EXPLORAR' | translate }}
-      </app-bws-button>
+      -->
+      <div class="cta-estudio-buttons">
+        <app-bws-button class="cta-estudio-btn" (clicked)="onExplorarClick()">{{ 'CTA_EXPLORAR' | translate }}
+        </app-bws-button>
+        <app-bws-button class="cta-estudio-btn" href="#t2" [label]="'NAV_FREEJEFRY' | translate"></app-bws-button>
+        <app-bws-button class="cta-estudio-btn" href="#t3" [label]="'NAV_DESARROLLO' | translate"></app-bws-button>
+      </div>
     </section>
     <section class="section-content estudio-detalle" [attr.aria-labelledby]="'estudio-detalle-title'">
       <app-bws-button class="cta-back" (clicked)="onVolverClick()">

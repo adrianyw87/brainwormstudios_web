@@ -30,6 +30,18 @@ export class EstudioSectionComponent implements OnInit, OnChanges {
     this.titleChars = t.split('');
   }
 
+  /** Resalta B, W y la primera S (BrainWorm Studios) */
+  isHighlightChar(i: number): boolean {
+    const c = this.titleChars[i];
+    if (!c || c === ' ') return false;
+    if (c === 'B' || c === 'W') return true;
+    if (c === 'S') {
+      const title = this.titleChars.join('');
+      return title.indexOf('S') === i;
+    }
+    return false;
+  }
+
   crew = [
     { initial: 'ESTUDIO_MEMBER_1_INITIAL', name: 'ESTUDIO_MEMBER_1_NAME', role: 'ESTUDIO_MEMBER_1_ROLE', past: 'ESTUDIO_MEMBER_1_PAST' },
     { initial: 'ESTUDIO_MEMBER_2_INITIAL', name: 'ESTUDIO_MEMBER_2_NAME', role: 'ESTUDIO_MEMBER_2_ROLE', past: 'ESTUDIO_MEMBER_2_PAST' },

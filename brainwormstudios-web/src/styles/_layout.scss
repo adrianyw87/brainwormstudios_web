@@ -465,6 +465,15 @@ body,
 .cta-estudio-title-chars {
   display: inline-block;
 }
+/* Maquetación "mix": B, W y primera S resaltadas (BrainWorm Studios) */
+.cta-estudio-title-mix .cta-title-char-big {
+  font-size: 1.25em;
+  font-weight: 700;
+}
+.cta-estudio-title-mix .cta-title-char:not(.cta-title-char-big) {
+  font-size: 0.88em;
+  font-weight: 400;
+}
 .cta-title-char {
   display: inline-block;
   color: #000;
@@ -554,6 +563,12 @@ body,
   text-transform: uppercase;
   color: var(--bws-text-secondary);
   margin: 0;
+}
+.cta-estudio-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
 }
 .cta-estudio-hints-stagger {
   display: flex;
