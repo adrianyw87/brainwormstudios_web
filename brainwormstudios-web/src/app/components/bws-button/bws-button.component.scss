@@ -32,6 +32,11 @@
     height: 45px;
     pointer-events: none;
   }
+  .bws-btn-text {
+    position: relative;
+    z-index: 1;
+    color: inherit;
+  }
 
   rect {
     fill: none;

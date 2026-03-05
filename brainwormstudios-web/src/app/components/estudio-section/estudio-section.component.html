@@ -3,9 +3,24 @@
     <section class="section-content cta-estudio" [class.estudio-cta-visible]="view === 'cta' && shouldAnimateCta"
       [attr.aria-labelledby]="'estudio-title'">
       <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
-      <span class="section-title cta-estudio-title" id="estudio-title">{{ 'SECTION_ESTUDIO_TITLE' | translate }}</span>
-      <span
-        class="section-hint cta-estudio-hint">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}<br>{{ 'SECTION_ESTUDIO_HINT_2' | translate }}</span>
+      <div class="cta-estudio-text-mix">
+        <h2 class="section-title cta-estudio-title cta-estudio-title-tilt cta-estudio-title-chars" id="estudio-title">
+          @for (char of titleChars; track $index) {
+          <span class="cta-title-char" [class.cta-title-char-left]="$index < titleChars.length / 2"
+            [class.cta-title-char-right]="$index >= titleChars.length / 2"
+            [style.animation-delay]="(($index < titleChars.length / 2 ? $index : titleChars.length - 1 - $index) * 0.025 + 0.15) + 's'">{{ char === ' ' ? '\u00A0' : char }}</span>
+          }
+        </h2>
+        <!-- <p class="cta-estudio-tagline cta-estudio-tagline-tilt">{{ 'SECTION_ESTUDIO_TAGLINE' | translate }}</p> -->
+      </div>
+      <div class="cta-estudio-hints cta-estudio-hints-stagger">
+        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-1">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}
+        </p>
+        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-2">{{ 'SECTION_ESTUDIO_HINT_2' | translate }}
+        </p>
+        <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-3 cta-estudio-hint-last">
+          {{ 'SECTION_ESTUDIO_HINT_3' | translate }}</p>
+      </div>
       <app-bws-button class="cta-estudio-btn" (clicked)="onExplorarClick()">{{ 'CTA_EXPLORAR' | translate }}
       </app-bws-button>
     </section>
@@ -13,9 +28,20 @@
       <app-bws-button class="cta-back" (clicked)="onVolverClick()">
         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ 'CTA_VOLVER' | translate }}
       </app-bws-button>
-      <span class="section-title" id="estudio-detalle-title">{{ 'ESTUDIO_DETALLE_TITLE' | translate }}</span>
-      <span class="section-hint">{{ 'ESTUDIO_DETALLE_DESC' | translate }}</span>
-      <app-bws-button href="#t4">{{ 'CTA_IR_CONTACTO' | translate }}</app-bws-button>
+      <div class="estudio-detalle-header">
+        <h2 class="section-title estudio-detalle-title estudio-detalle-title-skew" id="estudio-detalle-title">
+          {{ 'ESTUDIO_DETALLE_TITLE' | translate }}</h2>
+        <p class="estudio-detalle-intro estudio-detalle-intro-mix">{{ 'ESTUDIO_DETALLE_INTRO' | translate }}</p>
+      </div>
+      <div class="estudio-crew estudio-crew-wild">
+        <article class="crew-card" *ngFor="let member of crew; let i = index">
+          <div class="crew-avatar" [attr.aria-hidden]="true">{{ member.initial | translate }}</div>
+          <h3 class="crew-name">{{ member.name | translate }}</h3>
+          <span class="crew-role">{{ member.role | translate }}</span>
+          <span class="crew-past">{{ member.past | translate }}</span>
+        </article>
+      </div>
+      <app-bws-button class="cta-contact" href="#t4" [label]="'CTA_IR_CONTACTO' | translate"></app-bws-button>
     </section>
   </div>
 </div>

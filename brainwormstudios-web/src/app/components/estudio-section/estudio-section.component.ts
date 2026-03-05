@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { BwsButtonComponent } from '../bws-button/bws-button.component';
 
@@ -10,9 +10,31 @@ import { BwsButtonComponent } from '../bws-button/bws-button.component';
   templateUrl: './estudio-section.component.html',
   styleUrl: './estudio-section.component.scss'
 })
-export class EstudioSectionComponent implements OnChanges {
+export class EstudioSectionComponent implements OnInit, OnChanges {
   @Input() view: 'cta' | 'detalle' = 'cta';
   @Input() animationTrigger = 0;
+
+  titleChars: string[] = [];
+
+  constructor(public translate: TranslateService) {
+    this.updateTitleChars();
+    this.translate.onLangChange.subscribe(() => this.updateTitleChars());
+  }
+
+  ngOnInit(): void {
+    this.updateTitleChars();
+  }
+
+  private updateTitleChars(): void {
+    const t = this.translate.instant('SECTION_ESTUDIO_TITLE') || '';
+    this.titleChars = t.split('');
+  }
+
+  crew = [
+    { initial: 'ESTUDIO_MEMBER_1_INITIAL', name: 'ESTUDIO_MEMBER_1_NAME', role: 'ESTUDIO_MEMBER_1_ROLE', past: 'ESTUDIO_MEMBER_1_PAST' },
+    { initial: 'ESTUDIO_MEMBER_2_INITIAL', name: 'ESTUDIO_MEMBER_2_NAME', role: 'ESTUDIO_MEMBER_2_ROLE', past: 'ESTUDIO_MEMBER_2_PAST' },
+    { initial: 'ESTUDIO_MEMBER_3_INITIAL', name: 'ESTUDIO_MEMBER_3_NAME', role: 'ESTUDIO_MEMBER_3_ROLE', past: 'ESTUDIO_MEMBER_3_PAST' },
+  ];
   @Output() explorarClick = new EventEmitter<void>();
   @Output() volverClick = new EventEmitter<void>();
 

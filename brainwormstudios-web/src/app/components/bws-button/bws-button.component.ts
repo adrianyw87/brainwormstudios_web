@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class BwsButtonComponent implements AfterViewInit, OnDestroy {
   @Input() href: string | null = null;
   @Input() type: 'button' | 'submit' = 'button';
+  @Input() label = '';
   @Output() clicked = new EventEmitter<void>();
   private ro: ResizeObserver | null = null;
 
