@@ -1,15 +1,21 @@
-@if (view === 'cta') {
-<section class="section-content cta-estudio" [attr.aria-labelledby]="'estudio-title'">
-  <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
-  <span class="section-title" id="estudio-title">{{ 'SECTION_ESTUDIO_TITLE' | translate }}</span>
-  <span
-    class="section-hint">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}<br>{{ 'SECTION_ESTUDIO_HINT_2' | translate }}</span>
-  <button type="button" class="cta-btn" (click)="explorarClick.emit()">{{ 'CTA_EXPLORAR' | translate }}</button>
-</section>
-} @else {
-<section class="section-content estudio-detalle" [attr.aria-labelledby]="'estudio-detalle-title'">
-  <span class="section-title" id="estudio-detalle-title">{{ 'ESTUDIO_DETALLE_TITLE' | translate }}</span>
-  <span class="section-hint">{{ 'ESTUDIO_DETALLE_DESC' | translate }}</span>
-  <a href="#t4" class="cta-btn">{{ 'CTA_IR_CONTACTO' | translate }}</a>
-</section>
-}
+<div class="estudio-viewport">
+  <div class="estudio-slider" [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
+    <section class="section-content cta-estudio" [class.estudio-cta-visible]="view === 'cta' && shouldAnimateCta"
+      [attr.aria-labelledby]="'estudio-title'">
+      <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
+      <span class="section-title cta-estudio-title" id="estudio-title">{{ 'SECTION_ESTUDIO_TITLE' | translate }}</span>
+      <span
+        class="section-hint cta-estudio-hint">{{ 'SECTION_ESTUDIO_HINT_1' | translate }}<br>{{ 'SECTION_ESTUDIO_HINT_2' | translate }}</span>
+      <app-bws-button class="cta-estudio-btn" (clicked)="onExplorarClick()">{{ 'CTA_EXPLORAR' | translate }}
+      </app-bws-button>
+    </section>
+    <section class="section-content estudio-detalle" [attr.aria-labelledby]="'estudio-detalle-title'">
+      <app-bws-button class="cta-back" (clicked)="onVolverClick()">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ 'CTA_VOLVER' | translate }}
+      </app-bws-button>
+      <span class="section-title" id="estudio-detalle-title">{{ 'ESTUDIO_DETALLE_TITLE' | translate }}</span>
+      <span class="section-hint">{{ 'ESTUDIO_DETALLE_DESC' | translate }}</span>
+      <app-bws-button href="#t4">{{ 'CTA_IR_CONTACTO' | translate }}</app-bws-button>
+    </section>
+  </div>
+</div>

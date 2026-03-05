@@ -24,6 +24,7 @@ export class AppComponent {
   title = 'BrainWorm Studios';
   currentLang = 'es';
   estudioView: 'cta' | 'detalle' = 'cta';
+  estudioAnimationKey = 0;
 
   constructor(public translate: TranslateService) {
     translate.addLangs(['es', 'en']);
@@ -42,6 +43,7 @@ export class AppComponent {
 
   resetEstudioView = (): void => {
     this.estudioView = 'cta';
+    this.estudioAnimationKey++;
   };
 
   goToEstudioDetalle(): void {

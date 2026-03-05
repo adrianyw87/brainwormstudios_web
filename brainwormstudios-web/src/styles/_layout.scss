@@ -120,7 +120,7 @@ body,
   flex-direction: column;
   align-items: center;
   line-height: 1.1;
-  color: var(--bws-text-primary);
+  color: var(--bws-text-on-dark);
   text-decoration: none;
   transition: opacity var(--bws-transition-menu);
 }
@@ -154,7 +154,7 @@ body,
 
 .nav-menu .nav-link,
 .nav-menu .nav-icon {
-  color: var(--bws-text-primary);
+  color: var(--bws-text-on-dark);
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -179,7 +179,7 @@ body,
 #t2:target #nav-dos,
 #t3:target #nav-tres,
 #t4:target #nav-cuatro {
-  color: var(--bws-accent-link);
+  color: var(--bws-accent-nav);
 }
 
 .nav-menu a {
@@ -201,7 +201,7 @@ body,
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
-  color: var(--bws-text-primary);
+  color: var(--bws-text-on-dark);
   font-size: 13px;
   font-family: inherit;
   cursor: pointer;
@@ -260,7 +260,7 @@ body,
   padding: 8px 14px;
   background: none;
   border: none;
-  color: var(--bws-text-primary);
+  color: var(--bws-text-on-dark);
   font-size: 13px;
   font-family: inherit;
   text-align: left;
@@ -273,7 +273,7 @@ body,
 }
 
 .lang-option.lang-active {
-  color: var(--bws-accent-link);
+  color: var(--bws-accent-nav);
 }
 
 /* Desktop: barra lateral vertical con palabras centradas + subrayado */
@@ -289,7 +289,7 @@ body,
     justify-content: center;
     padding: 0;
     gap: 0;
-    background: transparent;
+    background: #000000;
   }
 
   .nav-left {
@@ -334,7 +334,7 @@ body,
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--bws-accent-link);
+    background: var(--bws-accent-nav);
     transition: width 0.25s ease-out;
   }
 
@@ -370,6 +370,35 @@ body,
   .lang-trigger .fa-chevron-down.lang-open {
     transform: rotate(180deg);
   }
+
+  /* Estudio: logo muchísimo más grande y todo centrado */
+  .page#p1 {
+    justify-content: center;
+    align-items: center;
+  }
+  .page#p1 app-estudio-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  .page#p1 .section-content {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    margin: 0 auto;
+    transform: none !important;
+    width: 100%;
+    max-width: 640px;
+    justify-content: center;
+  }
+  .cta-estudio .cta-estudio-logo {
+    max-width: 720px;
+    width: 100%;
+  }
 }
 
 /* Contenido de cada sección */
@@ -390,6 +419,12 @@ body,
   transition: all var(--bws-transition-content);
 }
 
+/* Iconos de sección (rayo, cohete, sobre) */
+.section-content > i.fa-solid {
+  color: var(--bws-text-primary);
+  opacity: 0.9;
+}
+
 .page#p1 .section-content {
   height: auto;
   min-height: 220px;
@@ -399,33 +434,67 @@ body,
   align-items: center;
   gap: 16px;
 }
+/* Excepción: estudio-viewport no usa el transform del layout general */
+.page#p1 .estudio-viewport .section-content {
+  transform: none !important;
+}
 
 /* CTA Estudio: logo grande + botón Explorar */
 .cta-estudio .cta-estudio-logo {
-  max-width: 200px;
+  max-width: 450px;
   height: auto;
   order: -1;
 }
-.cta-btn {
-  display: inline-block;
-  padding: 12px 32px;
-  background: var(--bws-gold-primary);
-  color: #000;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+/* Animaciones al entrar en CTA Estudio */
+.cta-estudio.estudio-cta-visible .cta-estudio-logo {
+  animation: estudioLogoBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(245, 173, 0, 0.4);
+.cta-estudio.estudio-cta-visible .cta-estudio-title {
+  animation: estudioTextFadeIn 0.6s ease 0.2s forwards;
+  opacity: 0;
 }
-.estudio-detalle .cta-btn {
+.cta-estudio.estudio-cta-visible .cta-estudio-hint {
+  animation: estudioTextFadeIn 0.6s ease 0.35s forwards;
+  opacity: 0;
+}
+.cta-estudio.estudio-cta-visible .cta-estudio-btn {
+  animation: estudioTextFadeIn 0.5s ease 0.5s forwards;
+  opacity: 0;
+}
+@keyframes estudioLogoBounce {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { transform: scale(1.08); }
+  70% { transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes estudioTextFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.estudio-detalle app-bws-button:not(.cta-back) {
   margin-top: 8px;
+}
+
+/* Transición CTA ↔ Detalle Estudio: slide igual que cambio de sección principal */
+.estudio-viewport {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.estudio-slider {
+  display: flex;
+  width: 200%;
+  transition: transform var(--bws-transition-main);
+}
+.estudio-slider .section-content {
+  flex: 0 0 50%;
+  width: 50%;
+  transform: none !important;
+}
+.estudio-detalle app-bws-button.cta-back {
+  margin-bottom: 16px;
 }
 
 /* Animación entrada contenido al activar sección */
@@ -515,7 +584,7 @@ body,
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--bws-accent-link);
+    background: var(--bws-accent-nav);
     transition: width 0.25s ease-out;
   }
 
@@ -623,7 +692,43 @@ body,
     justify-content: center;
   }
   .cta-estudio .cta-estudio-logo {
-    max-width: 160px;
+    max-width: 350px;
+  }
+
+  /* Estudio viewport/slider: misma posición que otras secciones (left 5%, right 5%, max-width 320px) */
+  .page#p1 app-estudio-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .page#p1 .estudio-viewport {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 5%;
+    min-height: 200px;
+  }
+  .page#p1 .estudio-slider {
+    width: 200%;
+  }
+  .page#p1 .estudio-slider .section-content {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 50% !important; /* 50% del slider = ancho del viewport */
+    max-width: none !important;
+    height: auto !important;
+    min-height: 200px;
+    margin: 0;
+    padding: 0 1rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -636,16 +741,28 @@ body,
 }
 
 .section-title {
+  font-family: var(--bws-font-display);
   font-size: var(--bws-font-size-title);
-  line-height: 2;
+  font-weight: 400;
+  letter-spacing: var(--bws-letter-spacing-title);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--bws-text-primary);
 }
 
 .section-hint {
   font-size: var(--bws-font-size-hint);
+  font-weight: 500;
+  letter-spacing: var(--bws-letter-spacing-hint);
+  line-height: 1.6;
+  color: var(--bws-text-secondary);
 }
 
 .section-hint a {
   color: var(--bws-accent-link);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: all var(--bws-transition-link);
 }
 

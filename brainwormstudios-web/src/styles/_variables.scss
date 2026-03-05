@@ -4,35 +4,39 @@
  */
 
 :root {
-  /* === Paleta de colores === */
-  --bws-gold-primary: #f5ad00;
-  --bws-gold-secondary: #ecb939;
-  --bws-gold-light: #f0c75e;
-  --bws-brown-medium: #726255;
-  --bws-brown-dark: #372e29;
+  /* === Paleta Kill Bill: negro + amarillo, de oscuro a claro === */
   --bws-black: #000000;
+  --bws-yellow-base: #f8b71d; /* Amarillo más oscuro */
+  --bws-gold-primary: #f8b71d;
+  --bws-gold-secondary: #f9c31a;
+  --bws-gold-light: #fcd612;
 
-  /* Colores por sección (backgrounds) */
-  --bws-section-1-bg: var(--bws-black);
-  --bws-section-2-bg: var(--bws-gold-primary);
-  --bws-section-3-bg: #d4a017;
-  --bws-section-4-bg: var(--bws-gold-secondary);
+  /* Secciones: tus 3 amarillos + uno más claro */
+  --bws-section-1-bg: #f8b71d; /* (248,183,29) - el más oscuro */
+  --bws-section-2-bg: #f9c31a; /* (249,195,26) */
+  --bws-section-3-bg: #fcd612; /* (252,214,18) */
+  --bws-section-4-bg: #fef5a0; /* El más claro */
 
-  /* Colores de texto y acentos */
-  --bws-text-primary: #ffffff;
-  --bws-text-secondary: rgba(255, 255, 255, 0.9);
-  --bws-accent-link: var(--bws-gold-light);
-  --bws-accent-hover: #ffffff;
+  /* Colores de texto: fondo amarillo → negro; nav/dropdown (fondo negro) → blanco */
+  --bws-text-primary: #0a0a0a;
+  --bws-text-secondary: rgba(0, 0, 0, 0.75);
+  --bws-text-on-dark: #ffffff;
+  --bws-accent-link: #1a1a1a;
+  --bws-accent-hover: #000000;
+  --bws-accent-nav: var(--bws-gold-light); /* Enlace activo en nav (fondo negro) */
 
   /* Background cuando otra sección está activa */
   --bws-overlay-dark: var(--bws-black);
 
   /* === Tipografía === */
-  --bws-font-family: 'Open Sans', 'Lato', 'Helvetica', sans-serif;
-  --bws-font-size-title: 38px;
-  --bws-font-size-hint: 13px;
-  --bws-font-size-icon: 32px;
-  --bws-font-size-icon-large: 80px;
+  --bws-font-family: 'Open Sans', 'Helvetica', sans-serif;
+  --bws-font-display: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif;
+  --bws-font-size-title: 42px;
+  --bws-font-size-hint: 15px;
+  --bws-font-size-icon: 36px;
+  --bws-font-size-icon-large: 72px;
+  --bws-letter-spacing-title: 0.12em;
+  --bws-letter-spacing-hint: 0.04em;
 
   /* === Transiciones === */
   --bws-transition-main: 0.8s cubic-bezier(0.54, 0.35, 0.29, 0.99);
