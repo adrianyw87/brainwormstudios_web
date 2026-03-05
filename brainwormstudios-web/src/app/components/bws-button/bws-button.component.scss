@@ -47,6 +47,20 @@
   }
 }
 
+/* Variante amarilla para cards */
+.bws-btn-yellow {
+  background: #f8b71d !important;
+  color: #000 !important;
+
+  rect {
+    stroke: #000;
+  }
+}
+.bws-btn-yellow:hover {
+  background: #fcd612 !important;
+  color: #000 !important;
+}
+
 /* Hover: fondo transparente, animación SVG, subrayado solo en la base */
 .bws-btn-fos1:hover {
   background: transparent;
@@ -59,5 +73,23 @@
     stroke-dasharray: var(--btn-w, 150) calc(var(--btn-w, 150) + 2 * var(--btn-h, 45));
     stroke-dashoffset: calc(var(--btn-w, 150) + var(--btn-h, 45));
     transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+/* Variante card: fondo amarillo de normal, negro en hover */
+.bws-btn-card {
+  background: var(--bws-section-1-bg) !important;
+  color: #000 !important;
+
+  rect {
+    stroke: #000;
+  }
+}
+.bws-btn-card:hover {
+  background: #000 !important;
+  color: var(--bws-section-1-bg) !important;
+
+  rect {
+    stroke: var(--bws-section-1-bg);
   }
 }

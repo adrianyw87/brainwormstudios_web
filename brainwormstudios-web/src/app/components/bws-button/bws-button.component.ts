@@ -12,6 +12,7 @@ export class BwsButtonComponent implements AfterViewInit, OnDestroy {
   @Input() href: string | null = null;
   @Input() type: 'button' | 'submit' = 'button';
   @Input() label = '';
+  @Input() variant: 'default' | 'yellow' | 'card' = 'default';
   @Output() clicked = new EventEmitter<void>();
   private ro: ResizeObserver | null = null;
 

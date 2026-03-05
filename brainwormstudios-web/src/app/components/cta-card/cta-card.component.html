@@ -1,0 +1,14 @@
+<article class="cta-card">
+  <div class="cta-card__contentBox">
+    <h3 class="cta-card__title">{{ title }}</h3>
+    <p class="cta-card__desc">{{ description }}</p>
+    <div class="cta-card__btnWrap">
+      @if (href) {
+      <app-bws-button variant="card" [href]="href" [label]="buttonLabel" (clicked)="onButtonClick()">
+      </app-bws-button>
+      } @else {
+      <app-bws-button variant="card" (clicked)="onButtonClick()">{{ buttonLabel }}</app-bws-button>
+      }
+    </div>
+  </div>
+</article>

@@ -2,10 +2,12 @@
   <div class="estudio-slider" [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
     <section class="section-content cta-estudio" [class.estudio-cta-visible]="view === 'cta' && shouldAnimateCta"
       [attr.aria-labelledby]="'estudio-title'">
-      <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
+      <div class="cta-estudio-logo-wrap">
+        <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
+      </div>
       <div class="cta-estudio-text-mix">
         <h2 class="section-title cta-estudio-title cta-estudio-title-tilt cta-estudio-title-chars cta-estudio-title-mix"
-          id="estudio-title">
+          id="estudio-title" style="margin-top: 0px;">
           @for (char of titleChars; track $index) {
           <span class="cta-title-char" [class.cta-title-char-left]="$index < titleChars.length / 2"
             [class.cta-title-char-right]="$index >= titleChars.length / 2"
@@ -22,11 +24,12 @@
         <p class="section-hint cta-estudio-hint cta-estudio-hint-offset-3 cta-estudio-hint-last">{{ 'SECTION_ESTUDIO_HINT_3' | translate }}</p>
       </div>
       -->
-      <div class="cta-estudio-buttons">
-        <app-bws-button class="cta-estudio-btn" (clicked)="onExplorarClick()">{{ 'CTA_EXPLORAR' | translate }}
-        </app-bws-button>
-        <app-bws-button class="cta-estudio-btn" href="#t2" [label]="'NAV_FREEJEFRY' | translate"></app-bws-button>
-        <app-bws-button class="cta-estudio-btn" href="#t3" [label]="'NAV_DESARROLLO' | translate"></app-bws-button>
+      <div class="cta-estudio-cards">
+        @for (card of ctaCards; track card.titleKey) {
+        <app-cta-card [title]="card.titleKey | translate" [description]="card.descKey | translate"
+          [buttonLabel]="card.buttonKey | translate" [href]="card.href" (buttonClick)="onExplorarClick()">
+        </app-cta-card>
+        }
       </div>
     </section>
     <section class="section-content estudio-detalle" [attr.aria-labelledby]="'estudio-detalle-title'">

@@ -1,12 +1,13 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { CtaCardComponent } from '../cta-card/cta-card.component';
 import { BwsButtonComponent } from '../bws-button/bws-button.component';
 
 @Component({
   selector: 'app-estudio-section',
   standalone: true,
-  imports: [TranslateModule, CommonModule, BwsButtonComponent],
+  imports: [TranslateModule, CommonModule, CtaCardComponent, BwsButtonComponent],
   templateUrl: './estudio-section.component.html',
   styleUrl: './estudio-section.component.scss'
 })
@@ -42,6 +43,11 @@ export class EstudioSectionComponent implements OnInit, OnChanges {
     return false;
   }
 
+  ctaCards = [
+    { titleKey: 'CTA_EXPLORAR', descKey: 'CTA_CARD_ESTUDIO_DESC', buttonKey: 'CTA_EXPLORAR', href: null as string | null },
+    { titleKey: 'NAV_FREEJEFRY', descKey: 'CTA_CARD_FREEJEFRY_DESC', buttonKey: 'CTA_ENTRAR', href: '#t2' },
+    { titleKey: 'NAV_DESARROLLO', descKey: 'CTA_CARD_DESARROLLO_DESC', buttonKey: 'NAV_DESARROLLO', href: '#t3' },
+  ];
   crew = [
     { initial: 'ESTUDIO_MEMBER_1_INITIAL', name: 'ESTUDIO_MEMBER_1_NAME', role: 'ESTUDIO_MEMBER_1_ROLE', past: 'ESTUDIO_MEMBER_1_PAST' },
     { initial: 'ESTUDIO_MEMBER_2_INITIAL', name: 'ESTUDIO_MEMBER_2_NAME', role: 'ESTUDIO_MEMBER_2_ROLE', past: 'ESTUDIO_MEMBER_2_PAST' },
