@@ -1,0 +1,50 @@
+[
+  {
+    "id": "camiseta-negra",
+    "nombre": "Camiseta BrainWorm",
+    "descripcion": "Camiseta negra con logo oficial. Algodón 100%.",
+    "precio": 19.99,
+    "imagen": "img/merchan/camiseta.png",
+    "categoria": "camisetas"
+  },
+  {
+    "id": "camiseta-amarilla",
+    "nombre": "Camiseta Jefry",
+    "descripcion": "Camiseta amarilla con ilustración de Jefry. Talles S a XXL.",
+    "precio": 22.99,
+    "imagen": "img/merchan/camiseta-jefry.png",
+    "categoria": "camisetas"
+  },
+  {
+    "id": "taza-negra",
+    "nombre": "Taza BrainWorm",
+    "descripcion": "Taza cerámica 325ml con logo. Lavavajillas y microondas.",
+    "precio": 12.99,
+    "imagen": "img/merchan/taza.png",
+    "categoria": "tazas"
+  },
+  {
+    "id": "taza-jefry",
+    "nombre": "Taza Jefry Pixel Art",
+    "descripcion": "Taza con diseño pixel art de Jefry. Capacidad 350ml.",
+    "precio": 14.99,
+    "imagen": "img/merchan/taza-jefry.png",
+    "categoria": "tazas"
+  },
+  {
+    "id": "figura-jefry",
+    "nombre": "Figura Jefry",
+    "descripcion": "Figura coleccionable de Jefry. Vinilo de alta calidad 12cm.",
+    "precio": 24.99,
+    "imagen": "img/merchan/figura-jefry.png",
+    "categoria": "figuras"
+  },
+  {
+    "id": "pin-jefry",
+    "nombre": "Pin Jefry",
+    "descripcion": "Pin metálico esmaltado. Diseño exclusivo del personaje.",
+    "precio": 5.99,
+    "imagen": "img/merchan/pin.png",
+    "categoria": "accesorios"
+  }
+]

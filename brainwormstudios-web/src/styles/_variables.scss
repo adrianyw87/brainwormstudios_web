@@ -16,6 +16,7 @@
   --bws-section-2-bg: #f9c31a; /* (249,195,26) */
   --bws-section-3-bg: #fcd612; /* (252,214,18) */
   --bws-section-4-bg: #fef5a0; /* El más claro */
+  --bws-section-5-bg: #fffde0; /* Aún más claro para Contacto */
 
   /* Colores de texto: fondo amarillo → negro; nav/dropdown (fondo negro) → blanco */
   --bws-text-primary: #0a0a0a;
@@ -55,5 +56,6 @@
   --bws-content-height: 170px;
   --bws-content-offset: 360%;
   --bws-slide-translate: -190%;
+  --bws-slide-translate-5: -290%;
   --bws-blur-amount: 3px;
 }

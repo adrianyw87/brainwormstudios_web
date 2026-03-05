@@ -1,0 +1,19 @@
+<section class="section-content merchan-section" [attr.aria-labelledby]="'merchan-title'">
+  <i class="fa-solid fa-shirt" aria-hidden="true"></i>
+  <span class="section-title" id="merchan-title">{{ 'SECTION_MERCHAN_TITLE' | translate }}</span>
+  <p class="section-hint merchan-hint">{{ 'SECTION_MERCHAN_HINT' | translate }}</p>
+  <div class="merchan-grid">
+    @for (p of productos; track p.id) {
+    <article class="product-card">
+      <div class="product-card__img-wrap">
+        <img [src]="p.imagen" [alt]="p.nombre" class="product-card__img" (error)="$any($event.target).src='img/BW-Logo.png'" />
+      </div>
+      <div class="product-card__body">
+        <h3 class="product-card__name">{{ p.nombre }}</h3>
+        <p class="product-card__desc">{{ p.descripcion }}</p>
+        <span class="product-card__price">{{ formatPrecio(p.precio) }}</span>
+      </div>
+    </article>
+    }
+  </div>
+</section>

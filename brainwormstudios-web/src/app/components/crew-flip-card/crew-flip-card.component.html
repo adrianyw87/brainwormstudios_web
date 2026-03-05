@@ -1,0 +1,15 @@
+@if (member) {
+<div class="crew-flip-card" [class.crew-flip-card--flipped]="isFlipped" (click)="onFlipRequest()">
+  <div class="crew-flip-card__inner">
+    <div class="crew-flip-card__front">
+      <div class="crew-flip-card__avatar">{{ member.initial | translate }}</div>
+      <h3 class="crew-flip-card__name">{{ member.name | translate }}</h3>
+      <span class="crew-flip-card__hint">{{ 'CREW_SABER_MAS' | translate }}</span>
+    </div>
+    <div class="crew-flip-card__back">
+      <span class="crew-flip-card__role">{{ member.role | translate }}</span>
+      <p class="crew-flip-card__past">{{ member.past | translate }}</p>
+    </div>
+  </div>
+</div>
+}

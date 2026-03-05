@@ -1,0 +1,150 @@
+/* Carta con cara A y B: giro 3D contenido para no desplazarse ni montarse */
+:host {
+  display: block;
+}
+
+.crew-flip-card {
+  border-radius: 16px;
+  cursor: pointer;
+  height: 260px;
+  overflow: hidden;
+  perspective: 900px;
+  touch-action: manipulation;
+  width: 200px;
+}
+
+.crew-flip-card__inner {
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transition: transform 0.6s ease;
+  width: 100%;
+}
+
+.crew-flip-card__inner > * {
+  box-sizing: border-box;
+}
+
+@media (hover: hover) {
+  .crew-flip-card:hover .crew-flip-card__inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.crew-flip-card--flipped .crew-flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.crew-flip-card__front,
+.crew-flip-card__back {
+  backface-visibility: hidden;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  min-height: 260px;
+  padding: 1.5rem 1.25rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.crew-flip-card__front {
+  background: #191919;
+  position: relative;
+  transform: translateZ(0);
+}
+
+/* Banda diagonal amarilla sutil (como las CTA) */
+.crew-flip-card__front::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #c99000;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 85%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+@media (hover: hover) {
+  .crew-flip-card:hover .crew-flip-card__front::before {
+    opacity: 0.12;
+  }
+}
+
+.crew-flip-card--flipped .crew-flip-card__front::before {
+  opacity: 0.12;
+}
+
+.crew-flip-card__back {
+  background: var(--bws-section-1-bg);
+  border: 2px solid #000;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transform: rotateY(180deg) translateZ(0);
+}
+
+.crew-flip-card__hint {
+  background: var(--bws-section-1-bg);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-top: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.crew-flip-card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--bws-font-display);
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.crew-flip-card__name {
+  font-family: var(--bws-font-display);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.crew-flip-card__role {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.crew-flip-card__past {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}

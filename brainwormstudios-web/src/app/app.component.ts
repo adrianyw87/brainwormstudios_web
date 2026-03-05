@@ -5,6 +5,7 @@ import {
   EstudioSectionComponent,
   FreeJefrySectionComponent,
   DesarrolloSectionComponent,
+  // MerchanSectionComponent, // Comentado - volveremos más adelante
   ContactoSectionComponent
 } from './components';
 
@@ -15,6 +16,7 @@ import {
     EstudioSectionComponent,
     FreeJefrySectionComponent,
     DesarrolloSectionComponent,
+    // MerchanSectionComponent, // Comentado - volveremos más adelante
     ContactoSectionComponent
   ],
   templateUrl: './app.component.html',

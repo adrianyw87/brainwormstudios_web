@@ -32,24 +32,25 @@
         }
       </div>
     </section>
-    <section class="section-content estudio-detalle" [attr.aria-labelledby]="'estudio-detalle-title'">
-      <app-bws-button class="cta-back" (clicked)="onVolverClick()">
+    <section class="section-content estudio-detalle" [class.estudio-detalle-visible]="view === 'detalle'"
+      [attr.aria-labelledby]="'estudio-detalle-title'">
+      <app-bws-button class="cta-back cta-detalle" variant="card" (clicked)="onVolverClick()">
         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ 'CTA_VOLVER' | translate }}
       </app-bws-button>
       <div class="estudio-detalle-header">
-        <h2 class="section-title estudio-detalle-title estudio-detalle-title-skew" id="estudio-detalle-title">
+        <h2 class="section-title estudio-detalle-title estudio-detalle-title-skew estudio-detalle-title-anim"
+          id="estudio-detalle-title">
           {{ 'ESTUDIO_DETALLE_TITLE' | translate }}</h2>
-        <p class="estudio-detalle-intro estudio-detalle-intro-mix">{{ 'ESTUDIO_DETALLE_INTRO' | translate }}</p>
+        <p class="estudio-detalle-intro estudio-detalle-intro-mix estudio-detalle-intro-anim">
+          {{ 'ESTUDIO_DETALLE_INTRO' | translate }}</p>
       </div>
-      <div class="estudio-crew estudio-crew-wild">
-        <article class="crew-card" *ngFor="let member of crew; let i = index">
-          <div class="crew-avatar" [attr.aria-hidden]="true">{{ member.initial | translate }}</div>
-          <h3 class="crew-name">{{ member.name | translate }}</h3>
-          <span class="crew-role">{{ member.role | translate }}</span>
-          <span class="crew-past">{{ member.past | translate }}</span>
-        </article>
+      <div class="estudio-crew estudio-crew-flip">
+        @for (member of crew; track member.name; let i = $index) {
+        <app-crew-flip-card [member]="member" [isFlipped]="flippedIndex === i" (flipRequest)="onCrewCardFlip(i)" />
+        }
       </div>
-      <app-bws-button class="cta-contact" href="#t4" [label]="'CTA_IR_CONTACTO' | translate"></app-bws-button>
+      <app-bws-button class="cta-contact cta-detalle" variant="card" href="#t4" [label]="'CTA_IR_CONTACTO' | translate">
+      </app-bws-button>
     </section>
   </div>
 </div>

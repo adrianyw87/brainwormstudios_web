@@ -3,11 +3,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { CtaCardComponent } from '../cta-card/cta-card.component';
 import { BwsButtonComponent } from '../bws-button/bws-button.component';
+import { CrewFlipCardComponent } from '../crew-flip-card/crew-flip-card.component';
 
 @Component({
   selector: 'app-estudio-section',
   standalone: true,
-  imports: [TranslateModule, CommonModule, CtaCardComponent, BwsButtonComponent],
+  imports: [TranslateModule, CommonModule, CtaCardComponent, BwsButtonComponent, CrewFlipCardComponent],
   templateUrl: './estudio-section.component.html',
   styleUrl: './estudio-section.component.scss'
 })
@@ -48,6 +49,7 @@ export class EstudioSectionComponent implements OnInit, OnChanges {
     { titleKey: 'NAV_FREEJEFRY', descKey: 'CTA_CARD_FREEJEFRY_DESC', buttonKey: 'CTA_ENTRAR', href: '#t2' },
     { titleKey: 'NAV_DESARROLLO', descKey: 'CTA_CARD_DESARROLLO_DESC', buttonKey: 'NAV_DESARROLLO', href: '#t3' },
   ];
+  flippedIndex: number | null = null;
   crew = [
     { initial: 'ESTUDIO_MEMBER_1_INITIAL', name: 'ESTUDIO_MEMBER_1_NAME', role: 'ESTUDIO_MEMBER_1_ROLE', past: 'ESTUDIO_MEMBER_1_PAST' },
     { initial: 'ESTUDIO_MEMBER_2_INITIAL', name: 'ESTUDIO_MEMBER_2_NAME', role: 'ESTUDIO_MEMBER_2_ROLE', past: 'ESTUDIO_MEMBER_2_PAST' },
@@ -74,5 +76,9 @@ export class EstudioSectionComponent implements OnInit, OnChanges {
 
   onVolverClick(): void {
     this.volverClick.emit();
+  }
+
+  onCrewCardFlip(index: number): void {
+    this.flippedIndex = this.flippedIndex === index ? null : index;
   }
 }
