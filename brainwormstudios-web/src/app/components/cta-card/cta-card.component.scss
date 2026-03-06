@@ -9,7 +9,7 @@
   width: 100%;
   min-width: 220px;
   max-width: 300px;
-  height: 280px;
+  height: 340px;
   background: #191919;
   border-radius: 16px;
   overflow: hidden;
@@ -63,31 +63,89 @@
 .cta-card__contentBox {
   position: relative;
   height: 100%;
-  padding: 32px 24px 28px;
+  padding: 24px 24px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 16px;
   text-align: center;
-  gap: 14px;
   z-index: 2;
 }
 
+.cta-card__headerSlot {
+  margin-top: 20px;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+.cta-card__imageWrap {
+  max-width: 140px;
+  max-height: 70px;
+  margin-top: -14px;
+  flex-shrink: 0;
+}
+
+.cta-card__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -14px;
+}
+
+.cta-card__descSlot {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cta-card__btnSlot {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Títulos tipo logo: amarillo con borde negro, similar a Free Jefry */
 .cta-card__title {
   margin: 0;
-  font-size: 1.15rem;
+  font-family: var(--bws-font-display);
+  font-size: 1.5rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--bws-section-1-bg);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  line-height: 1.25;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  /* Contorno negro tipo logo Free Jefry (varias capas para grosor) */
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 1px 3px rgba(0, 0, 0, 0.5);
   transition: color 0.4s ease, text-shadow 0.4s ease;
 }
 
 .cta-card:hover .cta-card__title {
   color: #000;
-  text-shadow: none;
+  text-shadow:
+    -2px -2px 0 var(--bws-section-1-bg),
+    2px -2px 0 var(--bws-section-1-bg),
+    -2px 2px 0 var(--bws-section-1-bg),
+    2px 2px 0 var(--bws-section-1-bg),
+    -1px -1px 0 var(--bws-section-1-bg),
+    1px -1px 0 var(--bws-section-1-bg),
+    -1px 1px 0 var(--bws-section-1-bg),
+    1px 1px 0 var(--bws-section-1-bg),
+    0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .cta-card__desc {
@@ -103,9 +161,6 @@
   color: rgba(0, 0, 0, 0.8);
 }
 
-.cta-card__btnWrap {
-  margin-top: 4px;
-}
 
 /* Móvil: sin inclinación 3D para evitar cortes o que la primera tarjeta quede oculta */
 @media (max-width: 768px) {

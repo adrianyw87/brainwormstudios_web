@@ -14,6 +14,8 @@ export class CtaCardComponent {
   @Input() description = '';
   @Input() buttonLabel = '';
   @Input() href: string | null = null;
+  @Input() imageSrc: string | null = null;
+  @Input() hideTitle = false;
   @Output() buttonClick = new EventEmitter<void>();
 
   constructor(private el: ElementRef<HTMLElement>) { }

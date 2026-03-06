@@ -720,12 +720,31 @@ body,
 }
 .estudio-detalle-title-skew {
   transform: skewX(-4deg);
+  transition: transform 0.35s ease, letter-spacing 0.35s ease, text-shadow 0.35s ease;
+}
+.estudio-detalle-title-skew:hover {
+  transform: skewX(-2deg) translateY(-3px) scale(1.02);
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* Wrapper para hover: la animación de entrada en el p tiene prioridad sobre transform,
+   así que el hover va en el wrapper para que funcione */
+.estudio-detalle-intro-wrap {
+  transition: transform 0.35s ease;
+}
+.estudio-detalle-intro-wrap:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+.estudio-detalle-intro-wrap:hover .estudio-detalle-intro-mix {
+  color: var(--bws-text-primary);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 .estudio-detalle-intro-mix {
   text-align: center;
   padding: 1rem 0;
   margin: 0;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: color 0.35s ease, text-shadow 0.35s ease;
 }
 /* Animaciones entrada detalle de estudio */
 .estudio-detalle-visible .cta-back {

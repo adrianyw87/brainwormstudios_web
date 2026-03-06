@@ -27,7 +27,8 @@
       <div class="cta-estudio-cards">
         @for (card of ctaCards; track card.titleKey) {
         <app-cta-card [title]="card.titleKey | translate" [description]="card.descKey | translate"
-          [buttonLabel]="card.buttonKey | translate" [href]="card.href" (buttonClick)="onExplorarClick()">
+          [buttonLabel]="card.buttonKey | translate" [href]="card.href" [imageSrc]="card.imageSrc ?? null"
+          [hideTitle]="card.hideTitle ?? false" (buttonClick)="onExplorarClick()">
         </app-cta-card>
         }
       </div>
@@ -41,8 +42,10 @@
         <h2 class="section-title estudio-detalle-title estudio-detalle-title-skew estudio-detalle-title-anim"
           id="estudio-detalle-title">
           {{ 'ESTUDIO_DETALLE_TITLE' | translate }}</h2>
-        <p class="estudio-detalle-intro estudio-detalle-intro-mix estudio-detalle-intro-anim">
-          {{ 'ESTUDIO_DETALLE_INTRO' | translate }}</p>
+        <div class="estudio-detalle-intro-wrap">
+          <p class="estudio-detalle-intro estudio-detalle-intro-mix estudio-detalle-intro-anim">
+            {{ 'ESTUDIO_DETALLE_INTRO' | translate }}</p>
+        </div>
       </div>
       <div class="estudio-crew estudio-crew-flip">
         @for (member of crew; track member.name; let i = $index) {

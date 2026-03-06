@@ -1,8 +1,19 @@
 <article class="cta-card">
   <div class="cta-card__contentBox">
-    <h3 class="cta-card__title">{{ title }}</h3>
-    <p class="cta-card__desc">{{ description }}</p>
-    <div class="cta-card__btnWrap">
+    <div class="cta-card__headerSlot">
+      @if (imageSrc) {
+      <div class="cta-card__imageWrap">
+        <img [src]="imageSrc" alt="" class="cta-card__image">
+      </div>
+      }
+      @if (!hideTitle) {
+      <h3 class="cta-card__title">{{ title }}</h3>
+      }
+    </div>
+    <div class="cta-card__descSlot">
+      <p class="cta-card__desc">{{ description }}</p>
+    </div>
+    <div class="cta-card__btnSlot">
       @if (href) {
       <app-bws-button variant="card" [href]="href" [label]="buttonLabel" (clicked)="onButtonClick()">
       </app-bws-button>

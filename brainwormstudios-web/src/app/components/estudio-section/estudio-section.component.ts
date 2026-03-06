@@ -45,9 +45,9 @@ export class EstudioSectionComponent implements OnInit, OnChanges {
   }
 
   ctaCards = [
-    { titleKey: 'CTA_EXPLORAR', descKey: 'CTA_CARD_ESTUDIO_DESC', buttonKey: 'CTA_EXPLORAR', href: null as string | null },
-    { titleKey: 'NAV_FREEJEFRY', descKey: 'CTA_CARD_FREEJEFRY_DESC', buttonKey: 'CTA_ENTRAR', href: '#t2' },
-    { titleKey: 'NAV_DESARROLLO', descKey: 'CTA_CARD_DESARROLLO_DESC', buttonKey: 'NAV_DESARROLLO', href: '#t3' },
+    { titleKey: 'CTA_EXPLORAR', descKey: 'CTA_CARD_ESTUDIO_DESC', buttonKey: 'NAV_CONOCENOS_BUTTON', href: null as string | null, imageSrc: null as string | null, hideTitle: false },
+    { titleKey: 'NAV_FREEJEFRY', descKey: 'CTA_CARD_FREEJEFRY_DESC', buttonKey: 'CTA_ENTRAR', href: '#t2', imageSrc: 'img/FreeJefryLogoPNG.png', hideTitle: true },
+    { titleKey: 'NAV_DESARROLLO', descKey: 'CTA_CARD_DESARROLLO_DESC', buttonKey: 'NAV_DESARROLLO_SHORT', href: '#t3', imageSrc: null as string | null, hideTitle: false },
   ];
   flippedIndex: number | null = null;
   crew = [
