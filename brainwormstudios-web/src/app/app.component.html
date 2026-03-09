@@ -5,40 +5,36 @@
     aria-label="Cerrar">×</button>
 </div>
 }
-<main class="ct" id="t1">
-  <div class="ct" id="t2">
-    <div class="ct" id="t3">
-      <div class="ct" id="t4">
-        <app-nav-bar [currentLang]="currentLang" (languageChange)="onLanguageChange($event)"
-          [onEstudioNavClick]="resetEstudioView">
-        </app-nav-bar>
+<main [class]="'ct route-' + currentSection">
+  <div class="ct">
+    <app-nav-bar [currentLang]="currentLang" (languageChange)="onLanguageChange($event)"
+      [onEstudioNavClick]="resetEstudioView">
+    </app-nav-bar>
 
-        <div class="page" id="p1">
-          <app-estudio-section [view]="estudioView" [animationTrigger]="estudioAnimationKey"
-            (explorarClick)="goToEstudioDetalle()" (volverClick)="resetEstudioView()">
-          </app-estudio-section>
-        </div>
+    <div class="page" id="p1">
+      <app-estudio-section [view]="estudioView" [animationTrigger]="estudioAnimationKey"
+        (explorarClick)="goToEstudioDetalle()" (volverClick)="resetEstudioView()">
+      </app-estudio-section>
+    </div>
 
-        <div class="page" id="p2">
-          <app-freejefry-section></app-freejefry-section>
-        </div>
+    <div class="page" id="p2">
+      <app-freejefry-section></app-freejefry-section>
+    </div>
 
-        <div class="page" id="p3">
-          <app-desarrollo-section></app-desarrollo-section>
-        </div>
+    <div class="page" id="p3">
+      <app-desarrollo-section></app-desarrollo-section>
+    </div>
 
-        <!-- Sección Merchan comentada - volveremos más adelante -->
-        <!-- <div class="page" id="p4">
+    <!-- Sección Merchan comentada - volveremos más adelante -->
+    <!-- <div class="page" id="p4">
           <app-merchan-section></app-merchan-section>
         </div>
         <div class="page" id="p5">
           <app-contacto-section></app-contacto-section>
         </div> -->
 
-        <div class="page" id="p4">
-          <app-contacto-section></app-contacto-section>
-        </div>
-      </div>
+    <div class="page" id="p4">
+      <app-contacto-section></app-contacto-section>
     </div>
   </div>
 </main>

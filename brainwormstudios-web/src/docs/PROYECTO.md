@@ -6,7 +6,7 @@
 
 ## 1. Resumen
 
-**BrainWorm Studios** es la web corporativa de un estudio de videojuegos indie de Madrid. Web one-page con estilo tipo Kill Bill (negro + amarillo, flat). Sin routing Angular: navegación por anclas (`#t1`, `#t2`, etc.) y CSS `:target`.
+**BrainWorm Studios** es la web corporativa de un estudio de videojuegos indie de Madrid. Web one-page con estilo tipo Kill Bill (negro + amarillo, flat). Sin routing Angular: navegación por anclas (`#studio`, `#free-jefry`, etc.) y CSS `:target`.
 
 ---
 
@@ -23,12 +23,12 @@
 
 ### 3.1 Navegación (hash-based)
 
-- `#t1` → Estudio (p1)
-- `#t2` → FreeJefry (p2)
-- `#t3` → Desarrollo (p3)
-- `#t4` → Contacto (p4)
+- `#studio` → Estudio (p1)
+- `#free-jefry` → FreeJefry (p2)
+- `#development` → Desarrollo (p3)
+- `#contact` → Contacto (p4)
 
-El `main` es un anidado de `div.ct` con id `t1`…`t4`. Cada sección está en un `div.page` (`p1`…`p4`). El CSS usa `:target` para aplicar el slide horizontal (desktop) o superposición (móvil).
+El `main` es un anidado de `div.ct` con id `studio`, `free-jefry`, `development`, `contact`. Cada sección está en un `div.page` (`p1`…`p4`). El CSS usa `:target` para aplicar el slide horizontal (desktop) o superposición (móvil).
 
 ### 3.2 Componentes (`src/app/components/`)
 
@@ -69,7 +69,7 @@ Tiene **dos vistas** con slider horizontal:
 - **Con `href`**: se renderiza como `<a>`; texto vía Input `[label]` (evita problemas con ng-content + translate).
 - Estilo: fondo negro, texto blanco, hover con fondo transparente y subrayado animado (SVG + ResizeObserver para que el subrayado quede siempre horizontal).
 - Ejemplo:  
-  `<app-bws-button href="#t4" [label]="'CTA_IR_CONTACTO' | translate"></app-bws-button>`
+  `<app-bws-button href="/contact" [label]="'CTA_IR_CONTACTO' | translate"></app-bws-button>`
 
 ---
 

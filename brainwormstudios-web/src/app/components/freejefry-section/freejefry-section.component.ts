@@ -24,15 +24,15 @@ const IMG = 'img/FreeJefryImagenes/';
   styleUrl: './freejefry-section.component.scss'
 })
 export class FreeJefrySectionComponent {
-  /** ID del video de YouTube para el trailer (ej: dQw4w9WgXcQ). Cambiar por el ID real. */
-  trailerVideoId = '';
+  /** ID del video de YouTube para el trailer */
+  trailerVideoId = '3l8uKeziu1g';
 
   constructor(private sanitizer: DomSanitizer) { }
 
   get trailerUrl(): SafeResourceUrl | null {
     if (!this.trailerVideoId) return null;
     return this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://www.youtube.com/embed/${this.trailerVideoId}`
+      `https://www.youtube.com/embed/${this.trailerVideoId}?start=12`
     );
   }
 

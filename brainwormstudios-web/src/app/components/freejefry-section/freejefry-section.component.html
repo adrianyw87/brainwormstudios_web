@@ -1,12 +1,8 @@
 <div class="fj-scroll">
-  <!-- Hero: banner con logo y textos -->
+  <!-- Hero: banner + trailer -->
   <section class="fj-hero">
     <div class="fj-hero__content">
-      <img src="img/FreeJefryLogoPNG.png" alt="FREE JEFRY" class="fj-hero__logo">
-      <h1 class="fj-hero__title">{{ 'FJ_HERO_TITLE' | translate }}</h1>
-      <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_1' | translate }}</p>
-      <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_2' | translate }}</p>
-      <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_3' | translate }}</p>
+      <img src="img/FreeJefryImagenes/BannerJefry2.png" alt="FREE JEFRY" class="fj-hero__banner">
       @if (trailerVideoId && trailerUrl) {
       <div class="fj-hero__video">
         <iframe [src]="trailerUrl" title="FREE JEFRY Trailer" frameborder="0"
@@ -19,6 +15,14 @@
       </div>
       }
     </div>
+  </section>
+
+  <!-- Textos de introducción -->
+  <section class="fj-hero-text">
+    <h1 class="fj-hero__tagline">{{ 'FJ_HERO_TITLE' | translate }}</h1>
+    <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_1' | translate }}</p>
+    <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_2' | translate }}</p>
+    <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_3' | translate }}</p>
   </section>
 
   <!-- El juego -->

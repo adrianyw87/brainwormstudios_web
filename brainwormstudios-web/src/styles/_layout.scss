@@ -56,23 +56,17 @@ body,
 }
 
 #p2 {
-  /* Fondo muro de castillo: textura tileable distribuida en toda la pantalla */
-  background-color: #2a2520;
+  /* Fondo negro con textura casi imperceptible */
+  background-color: #000;
   background-image:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.55) 0%, rgba(50, 35, 20, 0.5) 50%, rgba(0, 0, 0, 0.45) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.92) 100%),
     url('/img/FreeJefryImagenes/casteltiletexture.jpg');
   background-repeat: repeat;
   background-position: 0 0;
-  /* Escala uniforme para que la textura repita bien en toda la pantalla */
   background-size: 180px auto;
 }
 #p2::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(248, 183, 29, 0.06) 0%, transparent 40%, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
-  pointer-events: none;
-  z-index: 0;
+  display: none; /* Sin overlay oscuro arriba */
 }
 
 #p3 {
@@ -84,23 +78,23 @@ body,
 }
 
 /* Slide cuando se navega - desktop y móvil */
-#t2:target #p2,
-#t3:target #p3,
-#t4:target #p4 {
+.route-free-jefry #p2,
+.route-development #p3,
+.route-contact #p4 {
   transform: translateX(var(--bws-slide-translate));
   transition-delay: var(--bws-transition-delay) !important;
 }
 
 /* Overlay oscuro en sección 1 cuando otra está activa */
-#t2:target #p1,
-#t3:target #p1,
-#t4:target #p1 {
+.route-free-jefry #p1,
+.route-development #p1,
+.route-contact #p1 {
   background: var(--bws-overlay-dark);
 }
 
-#t2:target #p1 .section-content,
-#t3:target #p1 .section-content,
-#t4:target #p1 .section-content {
+.route-free-jefry #p1 .section-content,
+.route-development #p1 .section-content,
+.route-contact #p1 .section-content {
   filter: blur(var(--bws-blur-amount));
 }
 
@@ -184,17 +178,17 @@ body,
 }
 
 /* Enlace activo del menú - dorado; inactivos - blanco */
-#t1:target .nav-menu .nav-icon,
-#t2:target .nav-menu .nav-icon,
-#t3:target .nav-menu .nav-icon,
-#t4:target .nav-menu .nav-icon {
+.route-studio .nav-menu .nav-icon,
+.route-free-jefry .nav-menu .nav-icon,
+.route-development .nav-menu .nav-icon,
+.route-contact .nav-menu .nav-icon {
   color: #ffffff;
 }
 
-#t1:target #nav-uno,
-#t2:target #nav-dos,
-#t3:target #nav-tres,
-#t4:target #nav-cuatro {
+.route-studio #nav-uno,
+.route-free-jefry #nav-dos,
+.route-development #nav-tres,
+.route-contact #nav-cuatro {
   color: var(--bws-accent-nav);
 }
 
@@ -356,10 +350,10 @@ body,
 
   .nav-menu .nav-link:hover::after,
   .nav-menu .nav-icon:hover::after,
-  #t1:target #nav-uno::after,
-  #t2:target #nav-dos::after,
-  #t3:target #nav-tres::after,
-  #t4:target #nav-cuatro::after {
+  .route-studio #nav-uno::after,
+  .route-free-jefry #nav-dos::after,
+  .route-development #nav-tres::after,
+  .route-contact #nav-cuatro::after {
     width: 100%;
   }
 
@@ -871,54 +865,35 @@ body,
   color: var(--bws-text-on-dark);
 }
 
-/* Hero banner */
+/* Hero: banner grande sin fondo negro + video debajo */
 .fj-hero {
-  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 24px 80px;
+  padding: 40px 24px 32px;
 }
 .fj-hero__content {
-  max-width: 900px;
+  max-width: 1100px;
   width: 100%;
   text-align: center;
 }
-.fj-hero__logo {
-  max-height: 120px;
-  width: auto;
-  margin-bottom: 20px;
-}
-.fj-hero__title {
-  font-family: var(--bws-font-display);
-  font-size: 1.6rem;
-  color: var(--bws-section-1-bg);
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  margin: 0 0 20px;
-}
-.fj-hero__text {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.92);
-  margin: 0 0 12px;
-}
-.fj-hero__text:last-of-type {
-  margin-bottom: 24px;
-}
-.fj-hero__subtitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 32px;
+.fj-hero__banner {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin: 0 auto 28px;
+  border-radius: 8px;
 }
 .fj-hero__video {
   position: relative;
   width: 100%;
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
   aspect-ratio: 16/9;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(248, 183, 29, 0.2);
 }
 .fj-hero__video iframe {
   position: absolute;
@@ -930,13 +905,38 @@ body,
   max-width: 400px;
   margin: 0 auto;
   padding: 48px 32px;
-  background: rgba(0, 0, 0, 0.4);
   border-radius: 16px;
-  backdrop-filter: blur(12px);
 }
 .fj-hero__video-placeholder p {
   color: rgba(255, 255, 255, 0.9);
   margin: 0 0 24px;
+}
+
+/* Textos intro debajo del banner */
+.fj-hero-text {
+  max-width: 800px;
+  margin: 0 auto 64px;
+  padding: 0 24px;
+  text-align: center;
+}
+.fj-hero__tagline {
+  font-family: var(--bws-font-display);
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  color: var(--bws-section-1-bg);
+  text-shadow: 0 0 20px rgba(248, 183, 29, 0.4), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+.fj-hero__text {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 16px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.fj-hero-text .fj-hero__text:last-of-type {
+  margin-bottom: 0;
 }
 
 /* Fj-reveal: animaciones al hacer scroll */
@@ -984,31 +984,35 @@ body,
 .fj-section__title {
   font-family: var(--bws-font-display);
   font-size: 1.9rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
   color: var(--bws-section-1-bg);
-  margin: 0 0 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 12px rgba(248, 183, 29, 0.3);
+  margin: 0 0 24px;
   position: relative;
   display: inline-block;
-  padding-bottom: 0.2em;
-  border-bottom: 3px solid var(--bws-section-1-bg);
-  transition: letter-spacing 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  padding-bottom: 0.25em;
+  border-bottom: 3px solid rgba(248, 183, 29, 0.6);
+  transition: letter-spacing 0.3s ease, filter 0.3s ease, transform 0.3s ease;
 }
 .fj-section__title:hover {
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   color: #ffd54f;
-  border-bottom-color: #ffd54f;
-  transform: translateX(4px);
+  text-shadow: 0 0 12px rgba(248, 183, 29, 0.6), 0 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateX(4px) scale(1.02);
 }
 .fj-section__subtitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.95);
-  margin: 0 0 12px;
+  margin: 0 0 14px;
+  font-weight: 500;
 }
 .fj-section__text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 16px;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.94);
+  margin: 0 0 18px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.02em;
 }
 .fj-section__list {
   color: rgba(255, 255, 255, 0.9);
@@ -1281,10 +1285,10 @@ body,
 
   .nav-menu .nav-link:hover::after,
   .nav-menu .nav-icon:hover::after,
-  #t1:target #nav-uno::after,
-  #t2:target #nav-dos::after,
-  #t3:target #nav-tres::after,
-  #t4:target #nav-cuatro::after {
+  .route-studio #nav-uno::after,
+  .route-free-jefry #nav-dos::after,
+  .route-development #nav-tres::after,
+  .route-contact #nav-cuatro::after {
     width: 100%;
   }
 
@@ -1349,9 +1353,9 @@ body,
     z-index: 0;
   }
 
-  #t2:target #p2,
-  #t3:target #p3,
-  #t4:target #p4 {
+  .route-free-jefry #p2,
+  .route-development #p3,
+  .route-contact #p4 {
     z-index: 2;
   }
 
@@ -1502,11 +1506,18 @@ body,
 
   /* Free Jefry móvil */
   .fj-hero {
-    min-height: 60vh;
-    padding: 40px 16px 60px;
+    padding: 24px 16px 24px;
   }
-  .fj-hero__logo {
-    max-height: 90px;
+  .fj-hero__banner {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  .fj-hero-text {
+    padding: 0 16px;
+    margin-bottom: 48px;
+  }
+  .fj-hero__tagline {
+    font-size: 1.4rem;
   }
   .fj-section {
     padding: 0 16px;
