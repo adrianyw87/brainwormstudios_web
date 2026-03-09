@@ -1,5 +1,6 @@
-<div class="estudio-viewport">
-  <div class="estudio-slider" [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
+<div class="section-viewport estudio-viewport">
+  <div class="section-slider estudio-slider"
+    [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
     <section class="section-content cta-estudio" [class.estudio-cta-visible]="view === 'cta' && shouldAnimateCta"
       [attr.aria-labelledby]="'estudio-title'">
       <div class="cta-estudio-logo-wrap">

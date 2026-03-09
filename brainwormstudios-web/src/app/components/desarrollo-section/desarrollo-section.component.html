@@ -1,5 +1,6 @@
-<div class="desarrollo-viewport">
-  <div class="desarrollo-slider" [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
+<div class="section-viewport desarrollo-viewport">
+  <div class="section-slider desarrollo-slider"
+    [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
     <!-- Vista grid -->
     <section class="section-content desarrollo-grid" [attr.aria-labelledby]="'desarrollo-title'">
       <span class="section-title" id="desarrollo-title">{{ 'SECTION_DESARROLLO_TITLE' | translate }}</span>
