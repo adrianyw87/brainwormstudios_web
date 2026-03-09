@@ -612,6 +612,11 @@ body,
   min-width: 220px;
   max-width: 300px;
 }
+/* Negro puro en cards Estudio (igual que la nav) - solo en estado normal, no en hover */
+.cta-estudio-cards .cta-card:not(:hover) {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
 .cta-card:hover .bws-btn {
   border: 2px solid #000 !important;
 }

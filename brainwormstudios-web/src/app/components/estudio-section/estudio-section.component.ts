@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { CtaCardComponent } from '../cta-card/cta-card.component';
 import { BwsButtonComponent } from '../bws-button/bws-button.component';
 import { CrewFlipCardComponent } from '../crew-flip-card/crew-flip-card.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-estudio-section',
@@ -12,24 +13,23 @@ import { CrewFlipCardComponent } from '../crew-flip-card/crew-flip-card.componen
   templateUrl: './estudio-section.component.html',
   styleUrl: './estudio-section.component.scss'
 })
-export class EstudioSectionComponent implements OnInit, OnChanges {
+export class EstudioSectionComponent implements OnInit, OnChanges, OnDestroy {
   @Input() view: 'cta' | 'detalle' = 'cta';
   @Input() animationTrigger = 0;
 
   titleChars: string[] = [];
+  private translateSub?: Subscription;
 
-  constructor(public translate: TranslateService) {
-    this.updateTitleChars();
-    this.translate.onLangChange.subscribe(() => this.updateTitleChars());
-  }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    this.updateTitleChars();
+    this.translateSub = this.translate.stream('SECTION_ESTUDIO_TITLE').subscribe((t) => {
+      this.titleChars = (t || '').split('');
+    });
   }
 
-  private updateTitleChars(): void {
-    const t = this.translate.instant('SECTION_ESTUDIO_TITLE') || '';
-    this.titleChars = t.split('');
+  ngOnDestroy(): void {
+    this.translateSub?.unsubscribe();
   }
 
   /** Resalta B, W y la primera S (BrainWorm Studios) */

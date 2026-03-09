@@ -22,11 +22,20 @@
       @if (selectedService) {
       <div class="desarrollo-detalle-content">
         <span class="desarrollo-detalle__icon">{{ selectedService.icon }}</span>
-        <h2 class="section-title desarrollo-detalle__title" id="desarrollo-detalle-title">
-          {{ selectedService.titleKey | translate }}
-        </h2>
+        <div class="desarrollo-detalle__title-wrap">
+          <h2 class="desarrollo-detalle__title" id="desarrollo-detalle-title">
+            {{ selectedService.titleKey | translate }}
+          </h2>
+        </div>
         <p class="desarrollo-detalle__micro">{{ selectedService.microKey | translate }}</p>
         <p class="desarrollo-detalle__desc">{{ selectedService.descKey | translate }}</p>
+        @if (selectedService.processCards?.length) {
+        <div class="desarrollo-detalle__process">
+          @for (card of selectedService.processCards; track card.frontKey) {
+          <app-svc-flip-card [frontKey]="card.frontKey" [backKey]="card.backKey" />
+          }
+        </div>
+        }
       </div>
       }
       <app-bws-button class="desarrollo-contact" variant="card" href="/contact" [label]="'CTA_IR_CONTACTO' | translate">
