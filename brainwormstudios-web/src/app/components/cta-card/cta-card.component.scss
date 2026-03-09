@@ -23,7 +23,7 @@
 
 .cta-card:hover {
   background: var(--bws-section-1-bg);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* Corte diagonal en hover (se integra con el fondo amarillo) */
@@ -157,32 +157,11 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   line-height: 1.2;
-  /* Contorno negro tipo logo Free Jefry (varias capas para grosor) */
-  text-shadow:
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    2px 2px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000,
-    0 1px 3px rgba(0, 0, 0, 0.5);
-  transition: color 0.4s ease, text-shadow 0.4s ease;
+  transition: color 0.4s ease;
 }
 
 .cta-card:hover .cta-card__title {
   color: #000;
-  text-shadow:
-    -2px -2px 0 var(--bws-section-1-bg),
-    2px -2px 0 var(--bws-section-1-bg),
-    -2px 2px 0 var(--bws-section-1-bg),
-    2px 2px 0 var(--bws-section-1-bg),
-    -1px -1px 0 var(--bws-section-1-bg),
-    1px -1px 0 var(--bws-section-1-bg),
-    -1px 1px 0 var(--bws-section-1-bg),
-    1px 1px 0 var(--bws-section-1-bg),
-    0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .cta-card__desc {

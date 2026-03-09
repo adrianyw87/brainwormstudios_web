@@ -612,6 +612,9 @@ body,
   min-width: 220px;
   max-width: 300px;
 }
+.cta-card:hover .bws-btn {
+  border: 2px solid #000 !important;
+}
 .cta-estudio-hints-stagger {
   display: flex;
   flex-direction: column;
