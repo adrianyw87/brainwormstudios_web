@@ -1,0 +1,16 @@
+:host {
+  display: inline-block;
+  white-space: normal;
+}
+
+.fj-animated-title__space {
+  display: inline;
+  white-space: pre;
+}
+
+.fj-animated-title__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em) scale(0.8);
+  /* La animación se activa desde el padre .fj-reveal--visible en _layout.scss */
+}

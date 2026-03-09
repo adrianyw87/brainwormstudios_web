@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, HostListener } from '@angular/core';
+import { FjLightboxService } from './services/fj-lightbox.service';
 import { TranslateService } from '@ngx-translate/core';
 import {
   NavBarComponent,
@@ -22,11 +23,15 @@ import {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'BrainWorm Studios';
   currentLang = 'es';
   estudioView: 'cta' | 'detalle' = 'cta';
   estudioAnimationKey = 0;
+  lightboxState = { open: false, src: null as string | null };
+  private lightboxUnsub?: () => void;
+
+  private lightbox = inject(FjLightboxService);
 
   constructor(public translate: TranslateService) {
     translate.addLangs(['es', 'en']);
@@ -50,5 +55,24 @@ export class AppComponent {
 
   goToEstudioDetalle(): void {
     this.estudioView = 'detalle';
+  }
+
+  ngOnInit(): void {
+    this.lightboxUnsub = this.lightbox.subscribe((s) => {
+      this.lightboxState = s;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.lightboxUnsub?.();
+  }
+
+  closeLightbox(): void {
+    this.lightbox.close();
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.lightboxState.open) this.lightbox.close();
   }
 }

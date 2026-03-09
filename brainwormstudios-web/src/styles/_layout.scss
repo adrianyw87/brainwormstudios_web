@@ -56,15 +56,31 @@ body,
 }
 
 #p2 {
-  background: var(--bws-section-2-bg);
+  /* Fondo muro de castillo: textura tileable distribuida en toda la pantalla */
+  background-color: #2a2520;
+  background-image:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.55) 0%, rgba(50, 35, 20, 0.5) 50%, rgba(0, 0, 0, 0.45) 100%),
+    url('/img/FreeJefryImagenes/casteltiletexture.jpg');
+  background-repeat: repeat;
+  background-position: 0 0;
+  /* Escala uniforme para que la textura repita bien en toda la pantalla */
+  background-size: 180px auto;
+}
+#p2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(248, 183, 29, 0.06) 0%, transparent 40%, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 #p3 {
-  background: var(--bws-section-3-bg);
+  background: var(--bws-section-4-bg);
 }
 
 #p4 {
-  background: var(--bws-section-4-bg);
+  background: var(--bws-section-3-bg);
 }
 
 /* Slide cuando se navega - desktop y móvil */
@@ -827,6 +843,213 @@ body,
   margin: 0 auto 28px;
   letter-spacing: 0.02em;
 }
+
+/* ========== FREE JEFRY – crowdfunding: hero + scroll ========== */
+.page#p2 {
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.page#p2 app-freejefry-section {
+  width: 100%;
+  min-height: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.fj-scroll {
+  width: 100%;
+  min-height: 100%;
+  color: var(--bws-text-on-dark);
+}
+
+/* Hero banner */
+.fj-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 80px;
+}
+.fj-hero__content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+.fj-hero__logo {
+  max-height: 120px;
+  width: auto;
+  margin-bottom: 20px;
+}
+.fj-hero__title {
+  font-family: var(--bws-font-display);
+  font-size: 1.6rem;
+  color: var(--bws-section-1-bg);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  margin: 0 0 20px;
+}
+.fj-hero__text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 12px;
+}
+.fj-hero__text:last-of-type {
+  margin-bottom: 24px;
+}
+.fj-hero__subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 32px;
+}
+.fj-hero__video {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.fj-hero__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.fj-hero__video-placeholder {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 48px 32px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+.fj-hero__video-placeholder p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 24px;
+}
+
+/* Fj-reveal: animaciones al hacer scroll */
+.fj-reveal {
+  opacity: 0;
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.fj-reveal--visible {
+  opacity: 1;
+}
+.fj-reveal--fade { }
+.fj-reveal--fade.fj-reveal--visible { }
+.fj-reveal--slideLeft { transform: translateX(-60px); }
+.fj-reveal--slideLeft.fj-reveal--visible { transform: translateX(0); }
+.fj-reveal--slideRight { transform: translateX(60px); }
+.fj-reveal--slideRight.fj-reveal--visible { transform: translateX(0); }
+.fj-reveal--slideUp { transform: translateY(50px); }
+.fj-reveal--slideUp.fj-reveal--visible { transform: translateY(0); }
+.fj-reveal--slideDown { transform: translateY(-30px); }
+.fj-reveal--slideDown.fj-reveal--visible { transform: translateY(0); }
+.fj-reveal--scale { transform: scale(0.92); }
+.fj-reveal--scale.fj-reveal--visible { transform: scale(1); }
+
+/* Letras del título: animan solo cuando el reveal está visible */
+.fj-reveal:not(.fj-reveal--visible) .fj-animated-title__char {
+  animation: none;
+  opacity: 0;
+  transform: translateY(0.5em) scale(0.8);
+}
+.fj-reveal--visible .fj-animated-title__char {
+  animation: fj-letter-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes fj-letter-pop {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Secciones scroll */
+.fj-section {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  padding: 0 24px;
+}
+.fj-section__title {
+  font-family: var(--bws-font-display);
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--bws-section-1-bg);
+  margin: 0 0 20px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.2em;
+  border-bottom: 3px solid var(--bws-section-1-bg);
+  transition: letter-spacing 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.fj-section__title:hover {
+  letter-spacing: 0.12em;
+  color: #ffd54f;
+  border-bottom-color: #ffd54f;
+  transform: translateX(4px);
+}
+.fj-section__subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 12px;
+}
+.fj-section__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 16px;
+}
+.fj-section__list {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.8;
+  padding-left: 1.4rem;
+  margin: 0 0 24px;
+}
+.fj-section__media {
+  margin: 24px 0;
+  text-align: center;
+}
+.fj-section__img {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+.fj-section--with-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+.fj-section--with-deck .fj-section__title,
+.fj-section--with-deck .fj-section__text,
+.fj-section--with-deck .fj-section__list {
+  max-width: 720px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+.fj-section--with-deck app-fj-card-deck {
+  margin-top: 28px;
+  width: 100%;
+  max-width: 100%;
+}
+.fj-section--cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding-bottom: 80px;
+}
+
 .estudio-crew {
   display: flex;
   flex-wrap: nowrap;
@@ -958,6 +1181,23 @@ body,
 #t4:target .page#p4 .section-content {
   transform: translateX(0) !important;
   transition-delay: var(--bws-transition-content-delay);
+}
+
+/* Desarrollos: viewport full height, slider sin transform del layout */
+.page#p3 {
+  display: flex;
+  align-items: stretch;
+}
+.page#p3 app-desarrollo-section {
+  width: 100%;
+  height: 100%;
+}
+.page#p3 .desarrollo-viewport .section-content {
+  position: relative !important;
+  transform: none !important;
+  width: 100%;
+  height: auto;
+  min-height: 0;
 }
 
 
@@ -1140,6 +1380,12 @@ body,
     min-height: 200px;
   }
 
+  /* Desarrollos: altura fluida para grid y detalle */
+  .page#p3 .desarrollo-viewport .section-content {
+    height: auto;
+    min-height: 200px;
+  }
+
   /* CTA/Detalle Estudio: contenido fluye, viewport hace scroll */
   .page#p1 .cta-estudio,
   .page#p1 .estudio-detalle {
@@ -1269,19 +1515,19 @@ body,
     bottom: auto !important;
     left: auto !important;
     right: auto !important;
-    width: 50% !important; /* 50% del slider = ancho del viewport */
-    max-width: none !important;
-    height: auto !important;
-    min-height: 200px;
-    margin: 0;
-    margin-top: 20px;
-    padding: 0 1rem;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
+  }
+
+  /* Free Jefry móvil */
+  .fj-hero {
+    min-height: 60vh;
+    padding: 40px 16px 60px;
+  }
+  .fj-hero__logo {
+    max-height: 90px;
+  }
+  .fj-section {
+    padding: 0 16px;
+    margin-bottom: 48px;
   }
 }
 

@@ -1,5 +1,35 @@
-<section class="section-content" [attr.aria-labelledby]="'otros-title'">
-  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
-  <span class="section-title" id="otros-title">{{ 'SECTION_OTROS_TITLE' | translate }}</span>
-  <span class="section-hint">{{ 'SECTION_OTROS_HINT_1' | translate }}<br>{{ 'SECTION_OTROS_HINT_2' | translate }}</span>
-</section>
+<div class="desarrollo-viewport">
+  <div class="desarrollo-slider" [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
+    <!-- Vista grid -->
+    <section class="section-content desarrollo-grid" [attr.aria-labelledby]="'desarrollo-title'">
+      <span class="section-title" id="desarrollo-title">{{ 'SECTION_DESARROLLO_TITLE' | translate }}</span>
+      <span class="section-hint desarrollo-hint">{{ 'SECTION_DESARROLLO_HINT' | translate }}</span>
+      <div class="desarrollo-cards">
+        @for (svc of services; track svc.id) {
+        <app-cta-card [title]="svc.icon + ' ' + (svc.titleKey | translate)" [description]="svc.microKey | translate"
+          [buttonLabel]="'CREW_SABER_MAS' | translate" (buttonClick)="openDetalle(svc)">
+        </app-cta-card>
+        }
+      </div>
+    </section>
+    <!-- Vista detalle -->
+    <section class="section-content desarrollo-detalle" [class.desarrollo-detalle-visible]="view === 'detalle'"
+      [attr.aria-labelledby]="'desarrollo-detalle-title'">
+      <app-bws-button class="desarrollo-back" variant="card" (clicked)="volver()">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ 'CTA_VOLVER' | translate }}
+      </app-bws-button>
+      @if (selectedService) {
+      <div class="desarrollo-detalle-content">
+        <span class="desarrollo-detalle__icon">{{ selectedService.icon }}</span>
+        <h2 class="section-title desarrollo-detalle__title" id="desarrollo-detalle-title">
+          {{ selectedService.titleKey | translate }}
+        </h2>
+        <p class="desarrollo-detalle__micro">{{ selectedService.microKey | translate }}</p>
+        <p class="desarrollo-detalle__desc">{{ selectedService.descKey | translate }}</p>
+      </div>
+      }
+      <app-bws-button class="desarrollo-contact" variant="card" href="#t4" [label]="'CTA_IR_CONTACTO' | translate">
+      </app-bws-button>
+    </section>
+  </div>
+</div>

@@ -97,6 +97,43 @@
   margin-top: -14px;
 }
 
+/* Imagen que sobresale de la tarjeta (estilo Free Jefry) - espacio extra para que el título no se tape */
+.cta-card--image-overflow {
+  overflow: visible;
+  padding-top: 75px;
+}
+.cta-card--image-overflow .cta-card__contentBox {
+  padding-top: 16px;
+}
+.cta-card--image-overflow .cta-card__headerSlot {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+.cta-card__imageOverflow {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 24px);
+  max-width: 180px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.15);
+  z-index: 4;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cta-card:hover .cta-card__imageOverflow {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 0 3px var(--bws-section-1-bg);
+}
+.cta-card__imageOverflow-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .cta-card__descSlot {
   flex: 0 1 auto;
   display: flex;
@@ -162,12 +199,32 @@
 }
 
 
-/* Móvil: sin inclinación 3D para evitar cortes o que la primera tarjeta quede oculta */
+/* Variantes visuales para diferenciar las tarjetas Free Jefry (sin tocar transform para no romper hover) */
+.cta-card--variant-game {
+  border-left: 4px solid var(--bws-section-1-bg);
+}
+.cta-card--variant-castle {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 4px 0 0 rgba(139, 115, 85, 0.6) inset;
+}
+.cta-card--variant-jefry {
+  background: #1a1a1a;
+}
+.cta-card--variant-prisoners {
+  border-bottom: 3px solid rgba(248, 183, 29, 0.4);
+}
+.cta-card--variant-enemies {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 -3px 0 rgba(180, 70, 70, 0.25) inset;
+}
+.cta-card--variant-disguises {
+  border-right: 4px solid var(--bws-section-3-bg);
+}
+
+/* Móvil: sin inclinación 3D para evitar cortes */
 @media (max-width: 768px) {
   :host {
     perspective: none;
   }
   .cta-card {
-    transform: none;
+    transform: none !important;
   }
 }

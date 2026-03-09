@@ -1,9 +1,21 @@
-<article class="cta-card">
+<article class="cta-card" [class.cta-card--image-overflow]="imageOverflow && imageSrc"
+  [class.cta-card--variant-game]="cardVariant === 'game'" [class.cta-card--variant-castle]="cardVariant === 'castle'"
+  [class.cta-card--variant-jefry]="cardVariant === 'jefry'"
+  [class.cta-card--variant-prisoners]="cardVariant === 'prisoners'"
+  [class.cta-card--variant-enemies]="cardVariant === 'enemies'"
+  [class.cta-card--variant-disguises]="cardVariant === 'disguises'">
+  @if (imageSrc && imageOverflow) {
+  <div class="cta-card__imageOverflow">
+    <img [src]="imageSrc" alt="" class="cta-card__imageOverflow-img"
+      (error)="$any($event.target).src='img/card-placeholder.svg'">
+  </div>
+  }
   <div class="cta-card__contentBox">
     <div class="cta-card__headerSlot">
-      @if (imageSrc) {
+      @if (imageSrc && !imageOverflow) {
       <div class="cta-card__imageWrap">
-        <img [src]="imageSrc" alt="" class="cta-card__image">
+        <img [src]="imageSrc" alt="" class="cta-card__image"
+          (error)="$any($event.target).src='img/card-placeholder.svg'">
       </div>
       }
       @if (!hideTitle) {

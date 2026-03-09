@@ -1,5 +1,126 @@
-<section class="section-content" [attr.aria-labelledby]="'freejefry-title'">
-  <i class="fa-solid fa-bolt" aria-hidden="true"></i>
-  <span class="section-title" id="freejefry-title">{{ 'SECTION_FREEJEFRY_TITLE' | translate }}</span>
-  <span class="section-hint">{{ 'SECTION_FREEJEFRY_HINT' | translate }}</span>
-</section>
+<div class="fj-scroll">
+  <!-- Hero: banner con logo y textos -->
+  <section class="fj-hero">
+    <div class="fj-hero__content">
+      <img src="img/FreeJefryLogoPNG.png" alt="FREE JEFRY" class="fj-hero__logo">
+      <h1 class="fj-hero__title">{{ 'FJ_HERO_TITLE' | translate }}</h1>
+      <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_1' | translate }}</p>
+      <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_2' | translate }}</p>
+      <p class="fj-hero__text">{{ 'FJ_HERO_INTRO_3' | translate }}</p>
+      @if (trailerVideoId && trailerUrl) {
+      <div class="fj-hero__video">
+        <iframe [src]="trailerUrl" title="FREE JEFRY Trailer" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      } @else {
+      <div class="fj-hero__video-placeholder">
+        <app-bws-button variant="card" [label]="'FJ_CTA_APOYAR' | translate"></app-bws-button>
+      </div>
+      }
+    </div>
+  </section>
+
+  <!-- El juego -->
+  <section class="fj-section">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_EL_JUEGO"></span></h2>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_EL_JUEGO_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideRight">{{ 'FJ_EL_JUEGO_2' | translate }}</p>
+  </section>
+
+  <!-- ¿Quiénes han creado esta locura? -->
+  <section class="fj-section fj-section--with-deck">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_QUIENES"></span></h2>
+    <p class="fj-section__text" fjReveal="slideLeft">{{ 'FJ_QUIENES_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_QUIENES_2' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideRight">{{ 'FJ_QUIENES_3' | translate }}</p>
+    <app-fj-card-deck [items]="quienesDeck" [titleKey]="''" [hideOverlay]="true"></app-fj-card-deck>
+  </section>
+
+  <!-- ¿Por qué te necesitamos? -->
+  <section class="fj-section">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_POR_QUE"></span></h2>
+    <p class="fj-section__text" fjReveal="scale">{{ 'FJ_POR_QUE_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideLeft">{{ 'FJ_POR_QUE_2' | translate }}</p>
+  </section>
+
+  <!-- Las mecánicas -->
+  <section class="fj-section fj-section--with-deck">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_MECANICAS"></span></h2>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_MECANICAS_INTRO' | translate }}</p>
+    <ul class="fj-section__list" fjReveal="slideRight">
+      <li>{{ 'FJ_MEC_HABILIDADES' | translate }}</li>
+      <li>{{ 'FJ_MEC_DISFRACES' | translate }}</li>
+      <li>{{ 'FJ_MEC_OBJETOS' | translate }}</li>
+      <li>{{ 'FJ_MEC_ALIMENTOS' | translate }}</li>
+      <li>{{ 'FJ_MEC_AMIGOS' | translate }}</li>
+    </ul>
+    <app-fj-card-deck [items]="mecanicasDeck" [titleKey]="''" [hideOverlay]="true"></app-fj-card-deck>
+  </section>
+
+  <!-- Jefry -->
+  <section class="fj-section">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_JEFRY"></span></h2>
+    <p class="fj-section__text" fjReveal="slideLeft">{{ 'FJ_JEFRY_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_JEFRY_2' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideRight">{{ 'FJ_JEFRY_3' | translate }}</p>
+  </section>
+
+  <!-- El castillo -->
+  <section class="fj-section">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_CASTILLO"></span></h2>
+    <p class="fj-section__text" fjReveal="scale">{{ 'FJ_CASTILLO_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideLeft">{{ 'FJ_CASTILLO_2' | translate }}</p>
+  </section>
+
+  <!-- Serás mi amigo, esa es la ley (Rey Yobtar) -->
+  <section class="fj-section fj-section--with-deck">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_REY"></span></h2>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_REY_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideRight">{{ 'FJ_REY_2' | translate }}</p>
+    <app-fj-card-deck [items]="reyDeck" [titleKey]="''" [hideOverlay]="true"></app-fj-card-deck>
+  </section>
+
+  <!-- Enemigos -->
+  <section class="fj-section fj-section--with-deck">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_ENEMIGOS"></span></h2>
+    <p class="fj-section__text" fjReveal="slideLeft">{{ 'FJ_ENEMIGOS_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_ENEMIGOS_2' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideRight">{{ 'FJ_ENEMIGOS_3' | translate }}</p>
+    <app-fj-card-deck [items]="enemigosDeck" [titleKey]="''" [hideOverlay]="true"></app-fj-card-deck>
+  </section>
+
+  <!-- Amigos (presos) -->
+  <section class="fj-section fj-section--with-deck">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_AMIGOS"></span></h2>
+    <p class="fj-section__text" fjReveal="scale">{{ 'FJ_AMIGOS_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="slideLeft">{{ 'FJ_AMIGOS_2' | translate }}</p>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_AMIGOS_3' | translate }}</p>
+    <app-fj-card-deck [items]="amigosDeck" [titleKey]="''" [hideOverlay]="true"></app-fj-card-deck>
+  </section>
+
+  <!-- Cómo contribuir -->
+  <section class="fj-section">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_CONTRIBUIR"></span></h2>
+    <p class="fj-section__text" fjReveal="slideRight">{{ 'FJ_CONTRIBUIR_1' | translate }}</p>
+    <p class="fj-section__text" fjReveal="fade">{{ 'FJ_CONTRIBUIR_2' | translate }}</p>
+  </section>
+
+  <!-- Recompensas -->
+  <section class="fj-section">
+    <h2 class="fj-section__title" fjReveal="slideUp"><span fjAnimatedTitle="FJ_RECOMPENSAS"></span></h2>
+    <ul class="fj-section__list" fjReveal="slideLeft">
+      <li>{{ 'FJ_REWARD_10' | translate }}</li>
+      <li>{{ 'FJ_REWARD_15' | translate }}</li>
+      <li>{{ 'FJ_REWARD_25' | translate }}</li>
+      <li>{{ 'FJ_REWARD_35' | translate }}</li>
+      <li>{{ 'FJ_REWARD_50' | translate }}</li>
+    </ul>
+  </section>
+
+  <!-- CTAs -->
+  <section class="fj-section fj-section--cta" fjReveal="scale">
+    <app-bws-button variant="card" [label]="'FJ_CTA_DEMO' | translate"></app-bws-button>
+    <app-bws-button variant="card" [label]="'FJ_CTA_CROWDFUND' | translate"></app-bws-button>
+  </section>
+</div>

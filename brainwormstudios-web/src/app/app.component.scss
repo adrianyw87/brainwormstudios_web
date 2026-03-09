@@ -1,1 +1,48 @@
 /* Estilos específicos del componente - variables en _variables.scss */
+
+/* Lightbox global - se renderiza en app-root para evitar problemas con transform en padres */
+.fj-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+  animation: fj-lightbox-fade 0.2s ease;
+}
+@keyframes fj-lightbox-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fj-lightbox__img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: default;
+}
+.fj-lightbox__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.fj-lightbox__close:hover {
+  background: var(--bws-section-1-bg);
+  color: #000;
+}

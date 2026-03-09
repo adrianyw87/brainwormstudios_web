@@ -1,0 +1,29 @@
+<div class="fj-card-deck">
+  @if (titleKey) {
+  <h3 class="fj-card-deck__title">{{ titleKey | translate }}</h3>
+  }
+  <div class="fj-card-deck__stack" (click)="onStackClick($event)">
+    @for (item of items; track $index; let i = $index) {
+    <div class="fj-card-deck__card" [class.fj-card-deck__card--front]="i === currentIndex"
+      [style.transform]="getCardTransform(i)" [style.z-index]="getCardZIndex(i)">
+      <img [src]="item.imageSrc" [alt]="item.titleKey" class="fj-card-deck__img"
+        (error)="$any($event.target).src='img/card-placeholder.svg'">
+      <div class="fj-card-deck__overlay" [class.fj-card-deck__overlay--hidden]="hideOverlay">
+        @if (item.subtitle) {
+        <span class="fj-card-deck__subtitle">{{ item.subtitle }}</span>
+        }
+        <h4 class="fj-card-deck__label">{{ item.titleKey | translate }}</h4>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="fj-card-deck__nav">
+    <button type="button" class="fj-card-deck__btn" (click)="prev(); $event.stopPropagation()" aria-label="Anterior">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <span class="fj-card-deck__counter">{{ currentIndex + 1 }} / {{ items.length }}</span>
+    <button type="button" class="fj-card-deck__btn" (click)="next(); $event.stopPropagation()" aria-label="Siguiente">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+</div>
