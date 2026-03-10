@@ -1,9 +1,11 @@
-<div class="section-viewport desarrollo-viewport">
+<div class="section-viewport desarrollo-viewport" #viewport>
   <div class="section-slider desarrollo-slider"
     [style.transform]="view === 'detalle' ? 'translateX(-50%)' : 'translateX(0)'">
     <!-- Vista grid -->
-    <section class="section-content desarrollo-grid" [attr.aria-labelledby]="'desarrollo-title'">
-      <span class="section-title" id="desarrollo-title">{{ 'SECTION_DESARROLLO_TITLE' | translate }}</span>
+    <section class="section-content desarrollo-grid" [class.desarrollo-grid-visible]="view === 'grid'"
+      [attr.aria-labelledby]="'desarrollo-title'">
+      <span class="section-title desarrollo-title desarrollo-title-skew desarrollo-title-anim"
+        id="desarrollo-title">{{ 'SECTION_DESARROLLO_TITLE' | translate }}</span>
       <span class="section-hint desarrollo-hint">{{ 'SECTION_DESARROLLO_HINT' | translate }}</span>
       <div class="desarrollo-cards">
         @for (svc of services; track svc.id) {
@@ -21,13 +23,13 @@
       </app-bws-button>
       @if (selectedService) {
       <div class="desarrollo-detalle-content">
-        <div class="desarrollo-detalle__title-wrap">
-          <h2 class="desarrollo-detalle__title" id="desarrollo-detalle-title">
-            {{ selectedService.titleKey | translate }}
-          </h2>
-          <p class="desarrollo-detalle__micro">{{ selectedService.microKey | translate }}</p>
+        <h2 class="desarrollo-detalle__title desarrollo-detalle__title-skew desarrollo-detalle__title-anim"
+          id="desarrollo-detalle-title">
+          {{ selectedService.titleKey | translate }}
+        </h2>
+        <div class="desarrollo-detalle__desc-wrap">
+          <p class="desarrollo-detalle__desc">{{ selectedService.descKey | translate }}</p>
         </div>
-        <p class="desarrollo-detalle__desc">{{ selectedService.descKey | translate }}</p>
         @if (selectedService.processCards?.length) {
         <div class="desarrollo-detalle__process">
           @for (card of selectedService.processCards; track card.frontKey) {

@@ -81,12 +81,25 @@ export class AppComponent implements OnInit, OnDestroy {
     const path = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'studio';
     const valid: Section[] = ['studio', 'free-jefry', 'development', 'contact'];
     this.currentSection = valid.includes(path as Section) ? (path as Section) : 'studio';
+    this.scrollAllToTop();
+  }
+
+  private scrollAllToTop(): void {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    setTimeout(() => {
+      document.querySelectorAll('.section-viewport, .page').forEach((el) => {
+        (el as HTMLElement).scrollTop = 0;
+      });
+    }, 0);
   }
 
   navigateTo(section: Section): void {
     this.currentSection = section;
     const path = section === 'studio' ? '/' : `/${section}`;
     history.pushState(null, '', path);
+    this.scrollAllToTop();
   }
 
   closeLightbox(): void {

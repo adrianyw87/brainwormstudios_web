@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { BwsButtonComponent } from '../bws-button/bws-button.component';
 import { CtaCardComponent } from '../cta-card/cta-card.component';
@@ -26,9 +26,10 @@ export interface DesarrolloService {
   templateUrl: './desarrollo-section.component.html',
   styleUrl: './desarrollo-section.component.scss'
 })
-export class DesarrolloSectionComponent {
+export class DesarrolloSectionComponent implements AfterViewChecked {
   view: 'grid' | 'detalle' = 'grid';
   selectedService: DesarrolloService | null = null;
+  @ViewChild('viewport') viewport?: ElementRef<HTMLElement>;
 
   services: DesarrolloService[] = [
     {
@@ -89,9 +90,19 @@ export class DesarrolloSectionComponent {
     },
   ];
 
+  private shouldScrollToTop = false;
+
   openDetalle(svc: DesarrolloService): void {
     this.selectedService = svc;
     this.view = 'detalle';
+    this.shouldScrollToTop = true;
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.shouldScrollToTop && this.viewport?.nativeElement) {
+      this.viewport.nativeElement.scrollTop = 0;
+      this.shouldScrollToTop = false;
+    }
   }
 
   volver(): void {

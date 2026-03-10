@@ -1,8 +1,8 @@
-<section class="section-content" [attr.aria-labelledby]="'contacto-title'">
-  <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-  <span class="section-title" id="contacto-title">{{ 'SECTION_CONTACTO_TITLE' | translate }}</span>
-  <p class="section-hint">{{ 'SECTION_CONTACTO_QUESTION' | translate }}</p>
-  <p class="section-hint">
-    <a href="mailto:contacto&#64;brainwormstudios.com">contacto&#64;brainwormstudios.com</a>
-  </p>
+<section class="section-content contacto-section" [attr.aria-labelledby]="'contacto-title'">
+  <i class="fa-solid fa-envelope contacto-section__icon" aria-hidden="true"></i>
+  <span class="section-title contacto-section__title" id="contacto-title">{{ 'SECTION_CONTACTO_TITLE' | translate }}</span>
+  <p class="contacto-section__question">{{ 'SECTION_CONTACTO_QUESTION' | translate }}</p>
+  <div class="contacto-section__email-wrap">
+    <a class="contacto-section__email" href="mailto:contacto&#64;brainwormstudios.com">contacto&#64;brainwormstudios.com</a>
+  </div>
 </section>

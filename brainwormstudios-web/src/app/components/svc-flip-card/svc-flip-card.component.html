@@ -1,4 +1,4 @@
-<div class="svc-flip-card">
+<div class="svc-flip-card" [class.svc-flip-card--flipped]="isFlipped" (click)="toggleFlip()">
   <div class="svc-flip-card__inner">
     <div class="svc-flip-card__front">
       <span class="svc-flip-card__label">{{ frontKey | translate }}</span>

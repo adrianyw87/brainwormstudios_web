@@ -1,0 +1,15 @@
+<span class="rotating-title">
+  <span class="rotating-title__prefix">{{ prefix }}</span>
+  <span class="rotating-title__word-wrap" [class.rotating-title__word-wrap--shake]="isShaking">
+    @for (word of words; track $index; let wi = $index) {
+    <span class="rotating-title__word" [class.rotating-title__word--active]="wi === currentIndex">
+      @for (letter of getLetters(word); track $index; let li = $index) {
+      <span class="rotating-title__letter" [class.letter-out]="getLetterState(wi, li) === 'out'"
+        [class.letter-behind]="getLetterState(wi, li) === 'behind'"
+        [class.letter-in]="getLetterState(wi, li) === 'in'">{{ letter }}</span>
+      }
+    </span>
+    }
+  </span>
+  <span class="rotating-title__suffix">{{ suffix }}</span>
+</span>

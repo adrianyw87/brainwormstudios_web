@@ -7,14 +7,9 @@
         <img src="img/BW-Logo.png" alt="BrainWorm Studios" class="cta-estudio-logo">
       </div>
       <div class="cta-estudio-text-mix">
-        <h2 class="section-title cta-estudio-title cta-estudio-title-tilt cta-estudio-title-chars cta-estudio-title-mix"
+        <h2 class="section-title cta-estudio-title cta-estudio-title-tilt cta-estudio-title-mix"
           id="estudio-title" style="margin-top: 0px;">
-          @for (char of titleChars; track $index) {
-          <span class="cta-title-char" [class.cta-title-char-left]="$index < titleChars.length / 2"
-            [class.cta-title-char-right]="$index >= titleChars.length / 2"
-            [class.cta-title-char-big]="isHighlightChar($index)"
-            [style.animation-delay]="(($index < titleChars.length / 2 ? $index : titleChars.length - 1 - $index) * 0.025 + 0.15) + 's'">{{ char === ' ' ? '\u00A0' : char }}</span>
-          }
+          <app-rotating-title></app-rotating-title>
         </h2>
         <!-- <p class="cta-estudio-tagline cta-estudio-tagline-tilt">{{ 'SECTION_ESTUDIO_TAGLINE' | translate }}</p> -->
       </div>

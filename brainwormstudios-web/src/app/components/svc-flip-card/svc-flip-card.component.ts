@@ -11,4 +11,10 @@ import { TranslateModule } from '@ngx-translate/core';
 export class SvcFlipCardComponent {
   @Input() frontKey = '';
   @Input() backKey = '';
+
+  isFlipped = false;
+
+  toggleFlip(): void {
+    this.isFlipped = !this.isFlipped;
+  }
 }

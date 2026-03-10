@@ -63,6 +63,17 @@ body,
 #p1 {
   background: var(--bws-section-1-bg);
 }
+#p1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/branicontexture.PNG');
+  background-repeat: repeat;
+  background-size: 140px auto;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
 
 #p2 {
   /* Fondo negro con textura casi imperceptible */
@@ -81,9 +92,31 @@ body,
 #p3 {
   background: var(--bws-section-4-bg);
 }
+#p3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/branicontexture.PNG');
+  background-repeat: repeat;
+  background-size: 140px auto;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
 
 #p4 {
   background: var(--bws-section-3-bg);
+}
+#p4::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/branicontexture.PNG');
+  background-repeat: repeat;
+  background-size: 140px auto;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Slide cuando se navega - desktop y móvil */
@@ -463,6 +496,15 @@ body,
   justify-content: flex-start;
   gap: 16px;
   padding: 2rem 1.5rem;
+}
+
+/* Desarrollos: botones alineados al fondo de cada tarjeta */
+.desarrollo-cards .cta-card .cta-card__descSlot {
+  flex: 1;
+  min-height: 0;
+}
+.desarrollo-cards .cta-card .cta-card__btnSlot {
+  margin-bottom: 40px;
 }
 
 /* CTA Estudio: logo grande + contenido en capas */
@@ -1503,6 +1545,11 @@ body,
   .cta-estudio-tagline-tilt {
     transform: none;
   }
+  /* Título rotativo: centrar BrainWorm + caja en móvil */
+  .cta-estudio-title {
+    width: 100%;
+    text-align: center;
+  }
   .page#p1 .cta-title-char {
     animation-duration: 1s;
   }
@@ -1543,6 +1590,11 @@ body,
   .page#p1 .section-slider,
   .page#p3 .section-slider {
     width: 200%;
+  }
+
+  /* Desarrollos móvil: sin sombra en tarjetas de la lista */
+  .page#p3 .desarrollo-cards .cta-card {
+    box-shadow: none !important;
   }
 
   /* Free Jefry móvil */

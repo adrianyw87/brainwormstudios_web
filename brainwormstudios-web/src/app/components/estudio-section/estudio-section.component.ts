@@ -1,48 +1,21 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { CtaCardComponent } from '../cta-card/cta-card.component';
 import { BwsButtonComponent } from '../bws-button/bws-button.component';
 import { CrewFlipCardComponent } from '../crew-flip-card/crew-flip-card.component';
-import { Subscription } from 'rxjs';
+import { RotatingTitleComponent } from '../rotating-title/rotating-title.component';
 
 @Component({
   selector: 'app-estudio-section',
   standalone: true,
-  imports: [TranslateModule, CommonModule, CtaCardComponent, BwsButtonComponent, CrewFlipCardComponent],
+  imports: [TranslateModule, CommonModule, CtaCardComponent, BwsButtonComponent, CrewFlipCardComponent, RotatingTitleComponent],
   templateUrl: './estudio-section.component.html',
   styleUrl: './estudio-section.component.scss'
 })
-export class EstudioSectionComponent implements OnInit, OnChanges, OnDestroy {
+export class EstudioSectionComponent implements OnChanges {
   @Input() view: 'cta' | 'detalle' = 'cta';
   @Input() animationTrigger = 0;
-
-  titleChars: string[] = [];
-  private translateSub?: Subscription;
-
-  constructor(public translate: TranslateService) { }
-
-  ngOnInit(): void {
-    this.translateSub = this.translate.stream('SECTION_ESTUDIO_TITLE').subscribe((t) => {
-      this.titleChars = (t || '').split('');
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.translateSub?.unsubscribe();
-  }
-
-  /** Resalta B, W y la primera S (BrainWorm Studios) */
-  isHighlightChar(i: number): boolean {
-    const c = this.titleChars[i];
-    if (!c || c === ' ') return false;
-    if (c === 'B' || c === 'W') return true;
-    if (c === 'S') {
-      const title = this.titleChars.join('');
-      return title.indexOf('S') === i;
-    }
-    return false;
-  }
 
   ctaCards = [
     { titleKey: 'CTA_EXPLORAR', descKey: 'CTA_CARD_ESTUDIO_DESC', buttonKey: 'NAV_CONOCENOS_BUTTON', href: null as string | null, imageSrc: null as string | null, hideTitle: false },

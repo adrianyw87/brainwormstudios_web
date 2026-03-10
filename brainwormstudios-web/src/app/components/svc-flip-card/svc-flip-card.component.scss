@@ -30,6 +30,10 @@
   }
 }
 
+.svc-flip-card--flipped .svc-flip-card__inner {
+  transform: rotateY(180deg);
+}
+
 .svc-flip-card__front,
 .svc-flip-card__back {
   backface-visibility: hidden;
@@ -65,12 +69,15 @@
 }
 
 .svc-flip-card__hint {
+  background: var(--bws-section-1-bg);
+  color: #000;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 8px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-top: 12px;
 }
 
 .svc-flip-card__back {
