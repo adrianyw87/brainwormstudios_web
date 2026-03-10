@@ -33,7 +33,7 @@ export class CtaCardComponent {
     const h = rect.height;
     const rotateY = ((x - w / 2) / (w / 2)) * -8;
     const rotateX = ((y - h / 2) / (h / 2)) * 8;
-    (card as HTMLElement).style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    (card as HTMLElement).style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
   }
 
   @HostListener('mouseleave')

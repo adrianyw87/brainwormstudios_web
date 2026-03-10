@@ -93,3 +93,23 @@
     stroke: var(--bws-section-1-bg);
   }
 }
+
+/* Variante detail: negro normal, amarillo + borde negro en hover (Volver, Ir a contacto) */
+.bws-btn-detail {
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid transparent;
+
+  rect {
+    stroke: transparent;
+  }
+}
+.bws-btn-detail:hover {
+  background: var(--bws-section-1-bg) !important;
+  color: #000 !important;
+  border: 2px solid #000;
+
+  rect {
+    stroke: transparent;
+  }
+}

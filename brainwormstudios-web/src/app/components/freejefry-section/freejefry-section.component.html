@@ -1,8 +1,15 @@
 <div class="fj-scroll">
-  <!-- Hero: banner + trailer -->
+  <!-- Hero: banner con CTAs superpuestos abajo + trailer -->
   <section class="fj-hero">
     <div class="fj-hero__content">
-      <img src="img/FreeJefryImagenes/BannerJefry2.png" alt="FREE JEFRY" class="fj-hero__banner">
+      <div class="fj-hero__banner-wrap">
+        <img src="img/FreeJefryImagenes/BannerJefry2.png" alt="FREE JEFRY" class="fj-hero__banner">
+        <div class="fj-hero__ctas">
+          <app-bws-button variant="detail" [label]="'FJ_CTA_DEMO' | translate" href="#demo"></app-bws-button>
+          <app-bws-button variant="detail" [label]="'FJ_CTA_CROWDFUND' | translate" href="#crowdfunding">
+          </app-bws-button>
+        </div>
+      </div>
       @if (trailerVideoId && trailerUrl) {
       <div class="fj-hero__video">
         <iframe [src]="trailerUrl" title="FREE JEFRY Trailer" frameborder="0"

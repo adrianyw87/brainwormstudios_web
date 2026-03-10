@@ -7,7 +7,7 @@
       <span class="section-hint desarrollo-hint">{{ 'SECTION_DESARROLLO_HINT' | translate }}</span>
       <div class="desarrollo-cards">
         @for (svc of services; track svc.id) {
-        <app-cta-card [title]="svc.icon + ' ' + (svc.titleKey | translate)" [description]="svc.microKey | translate"
+        <app-cta-card [title]="svc.titleKey | translate" [description]="svc.microKey | translate"
           [buttonLabel]="'CREW_SABER_MAS' | translate" (buttonClick)="openDetalle(svc)">
         </app-cta-card>
         }
@@ -16,18 +16,17 @@
     <!-- Vista detalle -->
     <section class="section-content desarrollo-detalle" [class.desarrollo-detalle-visible]="view === 'detalle'"
       [attr.aria-labelledby]="'desarrollo-detalle-title'">
-      <app-bws-button class="desarrollo-back" variant="card" (clicked)="volver()">
+      <app-bws-button class="desarrollo-back" variant="detail" (clicked)="volver()">
         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ 'CTA_VOLVER' | translate }}
       </app-bws-button>
       @if (selectedService) {
       <div class="desarrollo-detalle-content">
-        <span class="desarrollo-detalle__icon">{{ selectedService.icon }}</span>
         <div class="desarrollo-detalle__title-wrap">
           <h2 class="desarrollo-detalle__title" id="desarrollo-detalle-title">
             {{ selectedService.titleKey | translate }}
           </h2>
+          <p class="desarrollo-detalle__micro">{{ selectedService.microKey | translate }}</p>
         </div>
-        <p class="desarrollo-detalle__micro">{{ selectedService.microKey | translate }}</p>
         <p class="desarrollo-detalle__desc">{{ selectedService.descKey | translate }}</p>
         @if (selectedService.processCards?.length) {
         <div class="desarrollo-detalle__process">
@@ -38,7 +37,8 @@
         }
       </div>
       }
-      <app-bws-button class="desarrollo-contact" variant="card" href="/contact" [label]="'CTA_IR_CONTACTO' | translate">
+      <app-bws-button class="desarrollo-contact" variant="detail" href="/contact"
+        [label]="'CTA_IR_CONTACTO' | translate">
       </app-bws-button>
     </section>
   </div>

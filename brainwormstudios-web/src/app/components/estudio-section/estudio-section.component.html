@@ -36,7 +36,7 @@
     </section>
     <section class="section-content estudio-detalle" [class.estudio-detalle-visible]="view === 'detalle'"
       [attr.aria-labelledby]="'estudio-detalle-title'">
-      <app-bws-button class="cta-back cta-detalle" variant="card" (clicked)="onVolverClick()">
+      <app-bws-button class="cta-back cta-detalle" variant="detail" (clicked)="onVolverClick()">
         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ 'CTA_VOLVER' | translate }}
       </app-bws-button>
       <div class="estudio-detalle-header">
@@ -53,7 +53,7 @@
         <app-crew-flip-card [member]="member" [isFlipped]="flippedIndex === i" (flipRequest)="onCrewCardFlip(i)" />
         }
       </div>
-      <app-bws-button class="cta-contact cta-detalle" variant="card" href="/contact"
+      <app-bws-button class="cta-contact cta-detalle" variant="detail" href="/contact"
         [label]="'CTA_IR_CONTACTO' | translate">
       </app-bws-button>
     </section>
