@@ -48,7 +48,7 @@ export default function Contact() {
       <div className="relative mx-auto max-w-7xl px-5 py-12 lg:px-8">
         <Reveal>
           <Kicker>{t.contact.title}</Kicker>
-          <h1 className="mt-6 font-display text-5xl font-bold uppercase leading-[0.9] tracking-tighter lg:text-8xl">
+          <h1 className="mt-6 font-display text-5xl font-bold uppercase leading-[0.9] tracking-tighter text-amber lg:text-8xl">
             {t.contact.subtitle}
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/60">{t.contact.desc}</p>

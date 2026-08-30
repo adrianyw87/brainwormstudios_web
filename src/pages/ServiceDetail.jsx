@@ -42,7 +42,7 @@ export default function ServiceDetail() {
           <div className="mt-8">
             <Kicker>{detail.kicker}</Kicker>
           </div>
-          <h1 className={`mt-6 font-display text-4xl font-bold uppercase leading-[0.95] tracking-tighter lg:text-7xl ${c.text}`}>{detail.title}</h1>
+          <h1 className="mt-6 font-display text-4xl font-bold uppercase leading-[0.95] tracking-tighter text-amber lg:text-7xl">{detail.title}</h1>
           <p className="mt-6 max-w-2xl text-xl leading-relaxed text-white/70">{detail.lead}</p>
         </Reveal>
 
@@ -85,7 +85,7 @@ export default function ServiceDetail() {
 
         {/* CTA */}
         <Reveal className="mt-16 flex flex-col items-center gap-5 border-t border-white/10 pt-12 text-center">
-          <p className="font-display text-2xl font-bold uppercase tracking-tight text-white lg:text-3xl">{t.home.contactTitle}</p>
+          <p className="font-display text-2xl font-bold uppercase tracking-tight text-amber lg:text-3xl">{t.home.contactTitle}</p>
           <Link
             to="/contacto"
             className="group inline-flex items-center gap-2 border border-amber bg-amber px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-ink-900 transition-all hover:shadow-[0_0_40px_-6px_rgba(248,183,29,0.8)]"
@@ -102,7 +102,7 @@ export default function ServiceDetail() {
           >
             <div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-white/40">Siguiente servicio</div>
-              <div className="mt-1 font-display text-xl font-bold uppercase tracking-tight text-white">{next.title}</div>
+              <div className="mt-1 font-display text-xl font-bold uppercase tracking-tight text-amber">{next.title}</div>
             </div>
             <ArrowRight size={20} className="text-amber transition-transform group-hover:translate-x-2" />
           </button>

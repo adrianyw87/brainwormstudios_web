@@ -1,13 +1,54 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Zap, Shirt, Package, Cookie, Users, Plus } from "lucide-react";
+import { Zap, Shirt, Package, Cookie, Users } from "lucide-react";
 import { useT } from "@/lib/useT";
 import Reveal, { Kicker } from "@/components/Reveal";
+import { Image } from "@/components/ui/image";
+import { MECHANICS_IMAGES } from "@/components/freejefry/gallery";
 
 const icons = [Zap, Shirt, Package, Cookie, Users];
 
+function MechanicCard({ mechanic, image, index, mechanicTag, delay = 0 }) {
+  const Icon = icons[index] || Zap;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay }}
+      className="group flex h-full flex-col overflow-hidden border border-white/10 bg-ink-900 transition-colors hover:border-amber/30 hover:bg-ink-800"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10 bg-ink-950">
+        <Image
+          src={image}
+          alt={mechanic.title}
+          className="h-full w-full object-contain p-2"
+          fittingType="fit"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-6 lg:p-7">
+        <div className="flex items-center justify-between gap-4">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-white/30">
+            {mechanicTag} · {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-amber/30 bg-amber/5 text-amber transition-all group-hover:bg-amber group-hover:text-ink-900">
+            <Icon size={20} />
+          </span>
+        </div>
+        <h3 className="mt-5 font-display text-xl font-bold uppercase tracking-tight text-amber lg:text-2xl">{mechanic.title}</h3>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">{mechanic.desc}</p>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function MechanicsTrack() {
   const { t } = useT();
+  const mechanics = t.freejefry.mechanics;
+  const topRow = mechanics.slice(0, 3);
+  const bottomRow = mechanics.slice(3);
+
   return (
     <section className="relative border-t border-white/10 bg-ink-800/30">
       <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
@@ -16,44 +57,32 @@ export default function MechanicsTrack() {
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60 lg:text-lg">{t.freejefry.mechanicsIntro}</p>
         </Reveal>
 
-        <div className="mt-12 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-          {t.freejefry.mechanics.map((m, i) => {
-            const Icon = icons[i] || Zap;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                className="group relative flex flex-col bg-ink-900 p-7 transition-colors hover:bg-ink-800"
-              >
-                <div className="absolute left-0 top-0 h-0.5 w-0 bg-amber transition-all duration-500 group-hover:w-full" />
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-white/30">{t.freejefry.mechanicTag} · {String(i + 1).padStart(2, "0")}</span>
-                  <span className="flex h-10 w-10 items-center justify-center border border-amber/30 bg-amber/5 text-amber transition-all group-hover:bg-amber group-hover:text-ink-900">
-                    <Icon size={20} />
-                  </span>
-                </div>
-                <h3 className="mt-6 font-display text-xl font-bold uppercase tracking-tight text-white lg:text-2xl">{m.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">{m.desc}</p>
-                <div className="mt-6 h-px w-full bg-white/5" />
-              </motion.div>
-            );
-          })}
-          {/* more to discover */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: 0.16 }}
-            className="group relative flex flex-col items-center justify-center bg-ink-900 p-7 text-center"
-          >
-            <span className="flex h-14 w-14 items-center justify-center border border-dashed border-amber/40 text-amber">
-              <Plus size={24} />
-            </span>
-            <p className="mt-5 font-display text-lg font-bold uppercase tracking-tight text-amber">{t.freejefry.moreToDiscover}</p>
-          </motion.div>
+        <div className="mt-12 space-y-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {topRow.map((m, i) => (
+              <MechanicCard
+                key={m.title}
+                mechanic={m}
+                image={MECHANICS_IMAGES[i]}
+                index={i}
+                mechanicTag={t.freejefry.mechanicTag}
+                delay={i * 0.08}
+              />
+            ))}
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:mx-auto lg:max-w-[calc((100%-3rem)/3*2+1.5rem)] lg:grid-cols-2">
+            {bottomRow.map((m, i) => (
+              <MechanicCard
+                key={m.title}
+                mechanic={m}
+                image={MECHANICS_IMAGES[i + 3]}
+                index={i + 3}
+                mechanicTag={t.freejefry.mechanicTag}
+                delay={(i + 3) * 0.08}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

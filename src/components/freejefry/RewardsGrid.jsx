@@ -22,7 +22,7 @@ export default function RewardsGrid() {
               <span className="font-display text-4xl font-bold text-amber">{r.price}</span>
               <span className="font-mono text-[10px] uppercase tracking-widest text-white/30">TIER {String(i + 1).padStart(2, "0")}</span>
             </div>
-            <h3 className="mt-5 font-display text-lg font-bold uppercase tracking-tight text-white">{r.name}</h3>
+            <h3 className="mt-5 font-display text-lg font-bold uppercase tracking-tight text-amber">{r.name}</h3>
             <p className="mt-2 text-sm leading-relaxed text-white/50">{r.desc}</p>
             <span className="mt-5 block h-px w-0 bg-amber transition-all duration-500 group-hover:w-full" />
           </motion.div>

@@ -82,7 +82,7 @@ export default function ViewMensajes() {
         <div className="w-full max-w-md space-y-8">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-amber">Admin</div>
-            <h1 className="mt-3 font-display text-4xl font-bold uppercase tracking-tight">
+            <h1 className="mt-3 font-display text-4xl font-bold uppercase tracking-tight text-amber">
               Mensajes
             </h1>
             <p className="mt-2 text-white/50">Acceso restringido</p>
@@ -133,7 +133,7 @@ export default function ViewMensajes() {
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-amber">Admin</div>
-            <h1 className="mt-2 font-display text-3xl font-bold uppercase tracking-tight">
+            <h1 className="mt-2 font-display text-3xl font-bold uppercase tracking-tight text-amber">
               Mensajes ({messages.length})
             </h1>
           </div>
@@ -174,7 +174,7 @@ export default function ViewMensajes() {
             >
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <h2 className="font-display text-xl font-bold uppercase tracking-tight">
+                  <h2 className="font-display text-xl font-bold uppercase tracking-tight text-amber">
                     {m.subject || "(Sin asunto)"}
                   </h2>
                   <div className="mt-1 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-white/40">

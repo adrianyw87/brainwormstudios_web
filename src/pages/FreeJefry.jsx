@@ -3,11 +3,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Download, Heart, ArrowDown } from "lucide-react";
 import { useT } from "@/lib/useT";
 import Reveal, { Kicker } from "@/components/Reveal";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import StoryBlock from "@/components/freejefry/StoryBlock";
 import MechanicsTrack from "@/components/freejefry/MechanicsTrack";
 import RewardsGrid from "@/components/freejefry/RewardsGrid";
 import HudCta from "@/components/freejefry/HudCta";
+import { FREEJEFRY_COVER, FREEJEFRY_GALLERIES } from "@/components/freejefry/gallery";
 import { Image } from "@/components/ui/image";
 
 // Replace with the real trailer ID when available.
@@ -41,9 +41,9 @@ export default function FreeJefry() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="mt-8 font-display text-[clamp(3.5rem,14vw,11rem)] font-bold uppercase leading-[0.85] tracking-tighter text-white text-glow"
+            className="mt-8 font-display text-[clamp(3.5rem,14vw,11rem)] font-bold uppercase leading-[0.85] tracking-tighter text-amber text-glow"
           >
-            FREE <span className="text-amber">JEFRY</span>
+            FREE JEFRY
           </motion.h1>
 
           <motion.p
@@ -61,7 +61,14 @@ export default function FreeJefry() {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="mt-12"
           >
-            <ImagePlaceholder label={t.freejefry.coverLabel} ratio="16/9" className="mx-auto max-w-3xl" />
+            <div className="relative mx-auto max-w-3xl overflow-hidden border border-white/10 aspect-video">
+              <Image
+                src={FREEJEFRY_COVER}
+                alt={t.freejefry.coverLabel}
+                className="h-full w-full object-contain"
+                fittingType="fit"
+              />
+            </div>
           </motion.div>
 
           <motion.div
@@ -97,8 +104,8 @@ export default function FreeJefry() {
         kicker={t.freejefry.introTitle}
         title={t.freejefry.introTitle}
         paragraphs={t.freejefry.intro}
-        accent="text-white"
         imageLabel={t.freejefry.galleryLabel}
+        images={FREEJEFRY_GALLERIES.intro}
       />
       <StoryBlock
         index={2}
@@ -106,16 +113,16 @@ export default function FreeJefry() {
         kicker={t.freejefry.gameTitle}
         title={t.freejefry.gameTitle}
         paragraphs={t.freejefry.game}
-        accent="text-amber"
         imageLabel={t.freejefry.galleryLabel}
+        images={FREEJEFRY_GALLERIES.juego}
       />
       <StoryBlock
         index={3}
         kicker={t.freejefry.creatorsTitle}
         title={t.freejefry.creatorsTitle}
         paragraphs={t.freejefry.creators}
-        accent="text-neural"
         imageLabel={t.freejefry.galleryLabel}
+        images={FREEJEFRY_GALLERIES.creadores}
       />
       <StoryBlock
         index={4}
@@ -123,18 +130,18 @@ export default function FreeJefry() {
         kicker={t.freejefry.whyTitle}
         title={t.freejefry.whyTitle}
         paragraphs={t.freejefry.why}
-        accent="text-magma"
         imageLabel={t.freejefry.galleryLabel}
+        images={FREEJEFRY_GALLERIES.porQue}
       />
 
       {/* ===== MECHANICS (horizontal scroll) ===== */}
       <MechanicsTrack />
 
-      <StoryBlock index={5} kicker={t.freejefry.jefryTitle} title={t.freejefry.jefryTitle} paragraphs={t.freejefry.jefry} accent="text-slime" imageLabel={t.freejefry.galleryLabel} />
-      <StoryBlock index={6} reverse kicker={t.freejefry.castleTitle} title={t.freejefry.castleTitle} paragraphs={t.freejefry.castle} accent="text-amber" imageLabel={t.freejefry.galleryLabel} />
-      <StoryBlock index={7} kicker={t.freejefry.yobtarTitle} title={t.freejefry.yobtarTitle} paragraphs={t.freejefry.yobtar} accent="text-magma" imageLabel={t.freejefry.galleryLabel} />
-      <StoryBlock index={8} reverse kicker={t.freejefry.enemiesTitle} title={t.freejefry.enemiesTitle} paragraphs={t.freejefry.enemies} accent="text-magma" imageLabel={t.freejefry.galleryLabel} />
-      <StoryBlock index={9} kicker={t.freejefry.friendsTitle} title={t.freejefry.friendsTitle} paragraphs={t.freejefry.friends} accent="text-neural" imageLabel={t.freejefry.galleryLabel} />
+      <StoryBlock index={5} kicker={t.freejefry.jefryTitle} title={t.freejefry.jefryTitle} paragraphs={t.freejefry.jefry} imageLabel={t.freejefry.galleryLabel} images={FREEJEFRY_GALLERIES.jefry} />
+      <StoryBlock index={6} reverse kicker={t.freejefry.castleTitle} title={t.freejefry.castleTitle} paragraphs={t.freejefry.castle} imageLabel={t.freejefry.galleryLabel} images={FREEJEFRY_GALLERIES.castillo} />
+      <StoryBlock index={7} kicker={t.freejefry.yobtarTitle} title={t.freejefry.yobtarTitle} paragraphs={t.freejefry.yobtar} imageLabel={t.freejefry.galleryLabel} images={FREEJEFRY_GALLERIES.yobtar} />
+      <StoryBlock index={8} reverse kicker={t.freejefry.enemiesTitle} title={t.freejefry.enemiesTitle} paragraphs={t.freejefry.enemies} imageLabel={t.freejefry.galleryLabel} images={FREEJEFRY_GALLERIES.enemigos} />
+      <StoryBlock index={9} kicker={t.freejefry.friendsTitle} title={t.freejefry.friendsTitle} paragraphs={t.freejefry.friends} imageLabel={t.freejefry.galleryLabel} images={FREEJEFRY_GALLERIES.amigos} />
 
       {/* ===== CONTRIBUTE ===== */}
       <section id="crowdfunding" className="relative overflow-hidden border-t border-white/10 bg-ink-800/40">

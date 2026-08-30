@@ -40,7 +40,7 @@ export default function Home() {
                 transition={{ duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="block"
               >
-                <span className={i === 1 ? "text-amber text-glow" : "text-white"}>{t.home[k]}</span>
+                <span className="text-amber">{t.home[k]}</span>
               </motion.span>
             ))}
           </h1>
@@ -106,7 +106,7 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-24 lg:grid-cols-2 lg:px-8 lg:py-32">
           <Reveal>
             <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-magma">{t.home.featuredTag}</div>
-            <h2 className="mt-4 font-display text-6xl font-bold uppercase leading-[0.9] tracking-tighter text-white lg:text-8xl">
+            <h2 className="mt-4 font-display text-6xl font-bold uppercase leading-[0.9] tracking-tighter text-amber lg:text-8xl">
               {t.home.featuredTitle}
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-white/60">{t.home.featuredDesc}</p>
@@ -130,7 +130,7 @@ export default function Home() {
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-widest text-amber">Adventure · Mystery</div>
-                  <div className="font-display text-2xl font-bold uppercase text-white">Free Jefry</div>
+                  <div className="font-display text-2xl font-bold uppercase text-amber">Free Jefry</div>
                 </div>
                 <span className="flex h-12 w-12 items-center justify-center rounded-full border border-amber bg-amber/10 text-amber transition-all group-hover:bg-amber group-hover:text-ink-900">
                   <ArrowUpRight size={18} />
@@ -146,7 +146,7 @@ export default function Home() {
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Kicker>{t.home.servicesTitle}</Kicker>
-            <h2 className="mt-6 font-display text-4xl font-bold uppercase leading-tight tracking-tight lg:text-6xl">{t.home.servicesSubtitle}</h2>
+            <h2 className="mt-6 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-amber lg:text-6xl">{t.home.servicesSubtitle}</h2>
           </div>
           <Link to="/desarrollos" className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber">
             {t.home.servicesCta}
@@ -167,7 +167,7 @@ export default function Home() {
                   <span className="mt-8 font-mono text-[10px] uppercase tracking-widest text-white/30">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-2 font-display text-lg font-bold uppercase leading-tight tracking-tight text-white">{s.title}</h3>
+                  <h3 className="mt-2 font-display text-lg font-bold uppercase leading-tight tracking-tight text-amber">{s.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-white/45">{s.short}</p>
                   <span className={`mt-6 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest ${c.text}`}>
                     {t.common.knowMore} →
@@ -184,7 +184,7 @@ export default function Home() {
         <div className="absolute inset-0 grid-lines opacity-20" />
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber/10 blur-[140px]" />
         <Reveal className="relative mx-auto max-w-4xl px-5 py-28 text-center lg:py-36">
-          <h2 className="font-display text-4xl font-bold uppercase leading-tight tracking-tight lg:text-7xl">{t.home.contactTitle}</h2>
+          <h2 className="font-display text-4xl font-bold uppercase leading-tight tracking-tight text-amber lg:text-7xl">{t.home.contactTitle}</h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-white/60">{t.home.contactDesc}</p>
           <Link
             to="/contacto"

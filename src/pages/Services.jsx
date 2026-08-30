@@ -13,7 +13,7 @@ export default function Services() {
       <section className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <Reveal>
           <Kicker>{t.services.title}</Kicker>
-          <h1 className="mt-6 font-display text-5xl font-bold uppercase leading-[0.9] tracking-tighter lg:text-8xl">
+          <h1 className="mt-6 font-display text-5xl font-bold uppercase leading-[0.9] tracking-tighter text-amber lg:text-8xl">
             {t.services.subtitle}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/60">{t.services.intro}</p>
@@ -38,7 +38,7 @@ export default function Services() {
                     <span className="font-mono text-[10px] uppercase tracking-widest text-white/30">{String(i + 1).padStart(2, "0")}</span>
                     <ArrowUpRight size={18} className="text-white/30 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
                   </div>
-                  <h3 className="mt-4 font-display text-2xl font-bold uppercase leading-tight tracking-tight text-white">{s.title}</h3>
+                  <h3 className="mt-4 font-display text-2xl font-bold uppercase leading-tight tracking-tight text-amber">{s.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-white/50">{s.short}</p>
                   <span className={`mt-6 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest ${c.text}`}>
                     {t.common.knowMore} →
