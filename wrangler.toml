@@ -1,0 +1,8 @@
+# Cloudflare Pages — BrainWorm Studios
+name = "brainworm-web"
+compatibility_date = "2024-11-12"
+pages_build_output_dir = "dist"
+
+# Bind KV namespace "MESSAGES" in the Cloudflare Pages dashboard
+# (Settings → Functions → KV namespace bindings).
+# For local API: npm run pages:dev (uses --kv MESSAGES).
