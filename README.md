@@ -66,8 +66,9 @@ En el proyecto Pages → **Settings** → **Environment variables** (Production)
 |--------------|-----------|
 | `ADMIN_USER` | `admin`   |
 | `ADMIN_PASS` | `123admin`|
+| `DEMO_PASS`  | `freejefry@2026` (clave descarga demo Free Jefry) |
 
-Marca `ADMIN_PASS` como secret si el panel lo permite. Cambia la contraseña cuando puedas.
+Marca `ADMIN_PASS` y `DEMO_PASS` como secret si el panel lo permite. Cambia las contraseñas cuando puedas.
 
 ### 4. Dominio `brainwormstudios.com`
 

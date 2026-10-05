@@ -135,6 +135,21 @@ Credenciales locales: archivo `.dev.vars` en la raíz (no está en git). En prod
 
 ---
 
+## Demo Free Jefry (descarga con clave)
+
+| Qué | Valor |
+|-----|-------|
+| Clave por defecto | `freejefry@2026` |
+| Variable Cloudflare (recomendada) | `DEMO_PASS` en Environment variables (Production) |
+| ZIP | Google Drive (cuenta brainwormgamestudios) |
+| File ID | `1hSV4auc4kBcjtAzi8ZMIC-77dUKtbMFx` |
+| Cuestionario PDF | `/docs/cuestionario-tester-free-jefry.pdf` |
+| Endpoint | `POST /api/demo/unlock` |
+
+Flujo en la web: clave → descargar PDF (obligatorio) → descargar ZIP + instrucciones.
+
+---
+
 ## Checklist: qué falta por hacer (si aún no lo hiciste)
 
 - [ ] Crear namespace **KV** y enlazarlo como `MESSAGES` en el proyecto Pages

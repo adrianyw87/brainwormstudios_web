@@ -1,6 +1,6 @@
 const BASE = "/images/freejefry";
 
-export const FREEJEFRY_COVER = `${BASE}/00-portada/BannerJefry.png`;
+export const FREEJEFRY_COVER = `${BASE}/00-portada/BannerJefry.jpg`;
 
 export const FREEJEFRY_GALLERIES = {
   intro: [`${BASE}/01-intro/01-A.jpg`, `${BASE}/01-intro/01-B.jpg`, `${BASE}/01-intro/01-C.jpg`],

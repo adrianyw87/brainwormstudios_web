@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Download, Heart, ArrowDown } from "lucide-react";
 import { useT } from "@/lib/useT";
@@ -7,6 +7,7 @@ import StoryBlock from "@/components/freejefry/StoryBlock";
 import MechanicsTrack from "@/components/freejefry/MechanicsTrack";
 import RewardsGrid from "@/components/freejefry/RewardsGrid";
 import HudCta from "@/components/freejefry/HudCta";
+import DemoDownloadModal from "@/components/freejefry/DemoDownloadModal";
 import { FREEJEFRY_COVER, FREEJEFRY_GALLERIES } from "@/components/freejefry/gallery";
 import { Image } from "@/components/ui/image";
 
@@ -17,6 +18,7 @@ const BRICK_BG = "/images/brick.png";
 
 export default function FreeJefry() {
   const { t } = useT();
+  const [demoOpen, setDemoOpen] = useState(false);
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 800], [0, 160]);
   const bgScale = useTransform(scrollY, [0, 800], [1.05, 1.2]);
@@ -156,13 +158,14 @@ export default function FreeJefry() {
               ))}
             </div>
             <div id="demo" className="mt-12 flex flex-wrap justify-center gap-4">
-              <a
-                href="#demo"
+              <button
+                type="button"
+                onClick={() => setDemoOpen(true)}
                 className="group flex items-center gap-2 border border-amber bg-amber px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-ink-900 transition-all hover:shadow-[0_0_40px_-6px_rgba(248,183,29,0.8)]"
               >
                 <Download size={16} />
                 {t.freejefry.downloadDemo}
-              </a>
+              </button>
               <a
                 href="#crowdfunding"
                 className="group flex items-center gap-2 border border-magma bg-magma/10 px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-magma transition-all hover:bg-magma hover:text-ink-900"
@@ -178,7 +181,8 @@ export default function FreeJefry() {
       {/* ===== REWARDS ===== */}
       <RewardsGrid />
 
-      <HudCta />
+      <HudCta onDownloadDemo={() => setDemoOpen(true)} />
+      <DemoDownloadModal open={demoOpen} onClose={() => setDemoOpen(false)} />
     </div>
   );
 }

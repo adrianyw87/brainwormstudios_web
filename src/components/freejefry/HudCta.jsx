@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Download, Heart } from "lucide-react";
 import { useT } from "@/lib/useT";
 
-// Sticky HUD call-to-action fixed at bottom corners of the Free Jefry page.
-export default function HudCta() {
+export default function HudCta({ onDownloadDemo }) {
   const { t } = useT();
   const [visible, setVisible] = useState(false);
 
@@ -28,14 +27,15 @@ export default function HudCta() {
               ◆ FREE JEFRY · HUD
             </div>
             <div className="pointer-events-auto flex w-full gap-3 sm:w-auto">
-              <a
-                href="#demo"
+              <button
+                type="button"
+                onClick={onDownloadDemo}
                 className="group flex flex-1 items-center justify-center gap-2 border border-amber bg-amber px-5 py-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink-900 transition-all hover:shadow-[0_0_30px_-4px_rgba(248,183,29,0.8)] sm:flex-none"
               >
                 <Download size={15} />
                 <span className="hidden sm:inline">{t.freejefry.downloadDemo}</span>
                 <span className="sm:hidden">DEMO</span>
-              </a>
+              </button>
               <a
                 href="#crowdfunding"
                 className="group flex flex-1 items-center justify-center gap-2 border border-magma bg-magma/10 px-5 py-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-magma transition-all hover:bg-magma hover:text-ink-900 sm:flex-none"
