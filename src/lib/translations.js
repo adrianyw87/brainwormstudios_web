@@ -56,7 +56,7 @@ export const translations = {
       videoLabel: "Tráiler de Free Jefry",
       introTitle: "JEFRY NECESITA TU AYUDA PARA ESCAPAR",
       intro: [
-        "En el oscuro y tenebroso castillo-mazmorra flotante del malvado Rey Yobtar, centenares de prisioneros son sometidos a las más terribles torturas y experimentos mentales con el fin de convertirles en lo único que el rey no tiene: un amigo verdadero.",
+        "En el oscuro y tenebroso castillo-mazmorra flotante del malvado Rey Nono, centenares de prisioneros son sometidos a las más terribles torturas y experimentos mentales con el fin de convertirles en lo único que el rey no tiene: un amigo verdadero.",
         "Nadie entra allí por voluntad propia y nadie ha conseguido salir... hasta ahora.",
         "Jefry, un pequeño y valiente goblin del bosque ha sido secuestrado recientemente, y no piensa quedarse mucho tiempo. ¡Usa tu habilidad y tu ingenio para ayudarle a escapar y ser libre de nuevo!",
       ],
