@@ -142,7 +142,7 @@ Credenciales locales: archivo `.dev.vars` en la raíz (no está en git). En prod
 | Clave por defecto | `freejefry@2026` |
 | Variable Cloudflare (recomendada) | `DEMO_PASS` en Environment variables (Production) |
 | ZIP | Google Drive (cuenta brainwormgamestudios) |
-| File ID | `1hSV4auc4kBcjtAzi8ZMIC-77dUKtbMFx` |
+| File ID | `1l3U3PQNeTIsEhmuypp-lMsn2isq9VsGR` |
 | Cuestionario PDF | `/docs/cuestionario-tester-free-jefry.pdf` |
 | Endpoint | `POST /api/demo/unlock` |
 

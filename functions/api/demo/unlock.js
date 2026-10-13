@@ -36,7 +36,7 @@ export async function onRequestPost(context) {
       ok: true,
       demoUrl: DEMO_DOWNLOAD_URL,
       questionnaireUrl: QUESTIONNAIRE_URL,
-      fileName: "FreeJefryDemo2026.zip",
+      fileName: "FreeJefry_Demo2026.rar",
     },
     200,
     headers
