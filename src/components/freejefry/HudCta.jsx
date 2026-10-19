@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, Heart } from "lucide-react";
+import { Download } from "lucide-react";
 import { useT } from "@/lib/useT";
 
 export default function HudCta({ onDownloadDemo }) {
@@ -26,7 +26,7 @@ export default function HudCta({ onDownloadDemo }) {
             <div className="pointer-events-auto hidden font-mono text-[10px] uppercase tracking-[0.3em] text-amber/70 sm:block">
               ◆ FREE JEFRY · HUD
             </div>
-            <div className="pointer-events-auto flex w-full gap-3 sm:w-auto">
+            <div className="pointer-events-auto flex w-full justify-end gap-3 sm:w-auto">
               <button
                 type="button"
                 onClick={onDownloadDemo}
@@ -36,14 +36,6 @@ export default function HudCta({ onDownloadDemo }) {
                 <span className="hidden sm:inline">{t.freejefry.downloadDemo}</span>
                 <span className="sm:hidden">DEMO</span>
               </button>
-              <a
-                href="#crowdfunding"
-                className="group flex flex-1 items-center justify-center gap-2 border border-magma bg-magma/10 px-5 py-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-magma transition-all hover:bg-magma hover:text-ink-900 sm:flex-none"
-              >
-                <Heart size={15} />
-                <span className="hidden sm:inline">{t.freejefry.backCrowdfunding}</span>
-                <span className="sm:hidden">BACK</span>
-              </a>
             </div>
           </div>
         </motion.div>

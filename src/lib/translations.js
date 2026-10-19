@@ -116,7 +116,7 @@ export const translations = {
       contributeTitle: "Cómo contribuir",
       contribute: [
         "Ahora que ya sabes todo acerca del juego puedes probarlo descargando nuestra demo. Está en tus manos decidir el futuro de Jefry y los habitantes del castillo.",
-        "Queremos que te sientas parte del proyecto, que sea tan tuyo como nuestro. Puedes hacernos una donación o contribuir en nuestra campaña de crowdfunding, toda ayuda es bienvenida para que juntos logremos nuestro objetivo: crear la aventura más épica jamás contada.",
+        "Queremos que te sientas parte del proyecto, que sea tan tuyo como nuestro. Prueba la demo, cuéntanos qué te parece y ayúdanos a crear la aventura más épica jamás contada.",
       ],
       rewardsTitle: "Recompensas",
       rewards: [
@@ -428,7 +428,7 @@ export const translations = {
       contributeTitle: "How to contribute",
       contribute: [
         "Now that you know everything about the game you can try it by downloading our demo. It's in your hands to decide the future of Jefry and the castle's inhabitants.",
-        "We want you to feel part of the project, as much yours as ours. You can donate or contribute to our crowdfunding campaign. All help is welcome so together we reach our goal: to create the most epic adventure ever told.",
+        "We want you to feel part of the project, as much yours as ours. Play the demo, tell us what you think and help us create the most epic adventure ever told.",
       ],
       rewardsTitle: "Rewards",
       rewards: [

@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Download, Heart, ArrowDown } from "lucide-react";
+import { Download, ArrowDown } from "lucide-react";
 import { useT } from "@/lib/useT";
 import Reveal, { Kicker } from "@/components/Reveal";
 import StoryBlock from "@/components/freejefry/StoryBlock";
 import MechanicsTrack from "@/components/freejefry/MechanicsTrack";
-import RewardsGrid from "@/components/freejefry/RewardsGrid";
 import HudCta from "@/components/freejefry/HudCta";
 import DemoDownloadModal from "@/components/freejefry/DemoDownloadModal";
 import { FREEJEFRY_COVER, FREEJEFRY_GALLERIES } from "@/components/freejefry/gallery";
 import { Image } from "@/components/ui/image";
 
-// Replace with the real trailer ID when available.
-const YOUTUBE_ID = "dQw4w9WgXcQ";
+const YOUTUBE_ID = "BRHtPdVrxgw";
 const CASTLE_BG = "/images/castle.png";
 const BRICK_BG = "/images/brick.png";
 
@@ -38,7 +36,7 @@ export default function FreeJefry() {
         </motion.div>
         <div className="absolute inset-0 grid-lines opacity-20" />
 
-        <div className="relative z-10 mx-auto w-full max-w-5xl px-5 text-center">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 text-center lg:px-8">
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -61,13 +59,13 @@ export default function FreeJefry() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="mt-12"
+            className="mt-10 w-full"
           >
-            <div className="relative mx-auto max-w-3xl overflow-hidden border border-white/10 aspect-video">
+            <div className="relative w-full overflow-hidden border border-white/10 bg-ink-900">
               <Image
                 src={FREEJEFRY_COVER}
                 alt={t.freejefry.coverLabel}
-                className="h-full w-full object-contain"
+                className="block h-auto w-full"
                 fittingType="fit"
               />
             </div>
@@ -96,6 +94,16 @@ export default function FreeJefry() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
+          </div>
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setDemoOpen(true)}
+              className="group flex items-center gap-2 border border-amber bg-amber px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-ink-900 transition-all hover:shadow-[0_0_40px_-6px_rgba(248,183,29,0.8)]"
+            >
+              <Download size={16} />
+              {t.freejefry.downloadDemo}
+            </button>
           </div>
         </div>
       </section>
@@ -146,7 +154,7 @@ export default function FreeJefry() {
       <StoryBlock index={9} kicker={t.freejefry.friendsTitle} title={t.freejefry.friendsTitle} paragraphs={t.freejefry.friends} imageLabel={t.freejefry.galleryLabel} images={FREEJEFRY_GALLERIES.amigos} />
 
       {/* ===== CONTRIBUTE ===== */}
-      <section id="crowdfunding" className="relative overflow-hidden border-t border-white/10 bg-ink-800/40">
+      <section id="demo" className="relative overflow-hidden border-t border-white/10 bg-ink-800/40">
         <div className="absolute inset-0 grid-lines opacity-20" />
         <div className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-amber to-transparent" />
         <div className="relative mx-auto max-w-4xl px-5 py-24 text-center lg:py-32">
@@ -157,7 +165,7 @@ export default function FreeJefry() {
                 <p key={i} className="mx-auto max-w-2xl text-lg leading-relaxed text-white/65">{p}</p>
               ))}
             </div>
-            <div id="demo" className="mt-12 flex flex-wrap justify-center gap-4">
+            <div className="mt-12 flex flex-wrap justify-center gap-4">
               <button
                 type="button"
                 onClick={() => setDemoOpen(true)}
@@ -166,20 +174,10 @@ export default function FreeJefry() {
                 <Download size={16} />
                 {t.freejefry.downloadDemo}
               </button>
-              <a
-                href="#crowdfunding"
-                className="group flex items-center gap-2 border border-magma bg-magma/10 px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-magma transition-all hover:bg-magma hover:text-ink-900"
-              >
-                <Heart size={16} />
-                {t.freejefry.backCrowdfunding}
-              </a>
             </div>
           </Reveal>
         </div>
       </section>
-
-      {/* ===== REWARDS ===== */}
-      <RewardsGrid />
 
       <HudCta onDownloadDemo={() => setDemoOpen(true)} />
       <DemoDownloadModal open={demoOpen} onClose={() => setDemoOpen(false)} />

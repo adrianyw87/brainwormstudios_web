@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useT } from "@/lib/useT";
@@ -11,7 +11,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -71,12 +70,6 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-3 md:flex">
             <LanguageToggle />
-            <button
-              onClick={() => navigate("/free-jefry")}
-              className="group relative overflow-hidden border border-amber bg-amber px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink-900 transition-all hover:shadow-[0_0_24px_-4px_rgba(248,183,29,0.7)]"
-            >
-              {t.nav.cta}
-            </button>
           </div>
 
           <button onClick={() => setOpen(true)} className="text-white md:hidden" aria-label="Open menu">
@@ -124,12 +117,6 @@ export default function Navbar() {
             </nav>
             <div className="flex items-center justify-between px-5 py-6">
               <LanguageToggle />
-              <Link
-                to="/free-jefry"
-                className="border border-amber bg-amber px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink-900"
-              >
-                {t.nav.cta}
-              </Link>
             </div>
           </motion.div>
         )}
