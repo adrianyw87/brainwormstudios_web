@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useT } from "@/lib/useT";
+import { INSTAGRAM_URL, YOUTUBE_CHANNEL_URL } from "@/lib/social";
 
 const socials = [
-  { label: "Instagram", to: "#" },
-  { label: "YouTube", to: "#" },
+  { label: "Instagram", to: INSTAGRAM_URL },
+  { label: "YouTube", to: YOUTUBE_CHANNEL_URL },
 ];
 
 export default function Footer() {
@@ -29,6 +30,8 @@ export default function Footer() {
                 <a
                   key={s.label}
                   href={s.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="border border-white/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-white/50 transition-all hover:border-amber/50 hover:text-amber"
                 >
                   {s.label}

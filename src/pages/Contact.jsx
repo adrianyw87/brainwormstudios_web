@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MapPin, Send, Check } from "lucide-react";
 import { useT } from "@/lib/useT";
 import Reveal, { Kicker } from "@/components/Reveal";
+import { INSTAGRAM_URL, YOUTUBE_CHANNEL_URL } from "@/lib/social";
 
 export default function Contact() {
   const { t } = useT();
@@ -123,9 +124,18 @@ export default function Contact() {
               <div className="border border-white/10 bg-ink-800/40 p-7">
                 <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-amber">{t.contact.social}</div>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {["Instagram", "YouTube"].map((s) => (
-                    <a key={s} href="#" className="border border-white/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-white/50 transition-all hover:border-amber/50 hover:text-amber">
-                      {s}
+                  {[
+                    { label: "Instagram", href: INSTAGRAM_URL },
+                    { label: "YouTube", href: YOUTUBE_CHANNEL_URL },
+                  ].map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border border-white/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-white/50 transition-all hover:border-amber/50 hover:text-amber"
+                    >
+                      {s.label}
                     </a>
                   ))}
                 </div>

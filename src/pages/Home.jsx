@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Instagram } from "lucide-react";
 import { useT, colorMap } from "@/lib/useT";
 import Reveal, { Stagger, StaggerItem, Kicker } from "@/components/Reveal";
 import { Image } from "@/components/ui/image";
+import { FREEJEFRY_COVER } from "@/components/freejefry/gallery";
+import { INSTAGRAM_URL } from "@/lib/social";
 
 const HERO_IMG = "/images/hero.png";
 
@@ -110,23 +112,34 @@ export default function Home() {
               {t.home.featuredTitle}
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-white/60">{t.home.featuredDesc}</p>
-            <Link
-              to="/free-jefry"
-              className="group mt-8 inline-flex items-center gap-2 border border-amber px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-amber transition-all hover:bg-amber hover:text-ink-900"
-            >
-              {t.home.featuredCta}
-              <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </Link>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                to="/free-jefry"
+                className="group inline-flex items-center gap-2 border border-amber px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-amber transition-all hover:bg-amber hover:text-ink-900"
+              >
+                {t.home.featuredCta}
+                <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </Link>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 border border-white/20 px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-white transition-all hover:border-amber hover:text-amber"
+              >
+                <Instagram size={16} />
+                {t.home.instagramCta}
+              </a>
+            </div>
           </Reveal>
           <Reveal delay={0.15}>
             <Link to="/free-jefry" className="group relative block overflow-hidden border border-white/10">
               <Image
-                src="/images/castle.png"
-                alt="Free Jefry castle"
-                className="aspect-[4/3] w-full transition-transform duration-700 group-hover:scale-105"
-                fittingType="fill"
+                src={FREEJEFRY_COVER}
+                alt="Free Jefry"
+                className="block h-auto w-full transition-transform duration-700 group-hover:scale-[1.02]"
+                fittingType="fit"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900/80 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-widest text-amber">Adventure · Mystery</div>

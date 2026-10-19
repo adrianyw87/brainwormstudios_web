@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Download, ArrowDown } from "lucide-react";
+import { Download, ArrowDown, Instagram } from "lucide-react";
 import { useT } from "@/lib/useT";
 import Reveal, { Kicker } from "@/components/Reveal";
 import StoryBlock from "@/components/freejefry/StoryBlock";
@@ -9,6 +9,7 @@ import HudCta from "@/components/freejefry/HudCta";
 import DemoDownloadModal from "@/components/freejefry/DemoDownloadModal";
 import { FREEJEFRY_COVER, FREEJEFRY_GALLERIES } from "@/components/freejefry/gallery";
 import { Image } from "@/components/ui/image";
+import { INSTAGRAM_URL } from "@/lib/social";
 
 const YOUTUBE_ID = "BRHtPdVrxgw";
 const CASTLE_BG = "/images/castle.png";
@@ -95,7 +96,7 @@ export default function FreeJefry() {
               allowFullScreen
             />
           </div>
-          <div className="mt-10 flex justify-center">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <button
               type="button"
               onClick={() => setDemoOpen(true)}
@@ -104,6 +105,15 @@ export default function FreeJefry() {
               <Download size={16} />
               {t.freejefry.downloadDemo}
             </button>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 border border-white/20 px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-white transition-all hover:border-amber hover:text-amber"
+            >
+              <Instagram size={16} />
+              {t.freejefry.instagramCta}
+            </a>
           </div>
         </div>
       </section>
@@ -174,6 +184,15 @@ export default function FreeJefry() {
                 <Download size={16} />
                 {t.freejefry.downloadDemo}
               </button>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 border border-white/20 px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.2em] text-white transition-all hover:border-amber hover:text-amber"
+              >
+                <Instagram size={16} />
+                {t.freejefry.instagramCta}
+              </a>
             </div>
           </Reveal>
         </div>
